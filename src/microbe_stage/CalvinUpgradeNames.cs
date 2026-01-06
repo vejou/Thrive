@@ -5,8 +5,8 @@ using System;
 /// </summary>
 public static class CalvinUpgradeNames
 {
-	/// <summary>
-	///   Technically this is "none" but internally upgrades don't save the "none" upgrade in the upgrades list.
+    /// <summary>
+    ///   Technically this is "none" but internally upgrades don't save the "none" upgrade in the upgrades list.
 	/// </summary>
 	public const string NOCALVIN_UPGRADE_NAME = "nocalvin";
 
@@ -33,13 +33,13 @@ public static class CalvinUpgradeNames
 		if (TryGetCalvinTypeFromName(name, organelle, out var result))
 			return result;
 
-		throw new ArgumentException("Name doesn't match any calvin upgrade name, name was " + name + " and organelle was " + organelle);
+        throw new ArgumentException("Name doesn't match any calvin upgrade name, name was " + name + " and organelle was " + organelle);
 	}
 
 	public static bool TryGetCalvinTypeFromName(string name, string organelle, out CalvinType type)
 	{
 		string name2 = name;
-		if (name2 == "none")
+        if (name2 == "none")
 		{
 			var toxinDefinition = SimulationParameters.Instance.GetOrganelleType(organelle);
 			name2 = toxinDefinition.DefaultUpgradeName;

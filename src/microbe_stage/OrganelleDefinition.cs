@@ -22,1007 +22,1007 @@ using UnlockConstraints;
 public class OrganelleDefinition : RegistryType
 #pragma warning restore CA1001
 {
-	/// <summary>
-	///   User readable name
-	/// </summary>
-	[TranslateFrom(nameof(untranslatedName))]
-	public string Name = null!;
+    /// <summary>
+    ///   User readable name
+    /// </summary>
+    [TranslateFrom(nameof(untranslatedName))]
+    public string Name = null!;
 
-	/// <summary>
-	///   Description of processes the organelle performs (this is the short description at the top of the tooltip)
-	/// </summary>
-	public string? ProcessesDescription;
+    /// <summary>
+    ///   Description of processes the organelle performs (this is the short description at the top of the tooltip)
+    /// </summary>
+    public string? ProcessesDescription;
 
-	/// <summary>
-	///   Description of the organelle
-	/// </summary>
-	public string Description = string.Empty;
+    /// <summary>
+    ///   Description of the organelle
+    /// </summary>
+    public string Description = string.Empty;
 
-	/// <summary>
-	///   When true, the graphics for this organelle are positioned externally (i.e. moved to the membrane edge and
-	///   point outside from the cell)
-	/// </summary>
-	public bool PositionedExternally;
+    /// <summary>
+    ///   When true, the graphics for this organelle are positioned externally (i.e. moved to the membrane edge and
+    ///   point outside from the cell)
+    /// </summary>
+    public bool PositionedExternally;
 
-	/// <summary>
-	///   Loaded icon for display in GUIs
-	/// </summary>
-	[JsonIgnore]
-	public Texture2D? LoadedIcon;
+    /// <summary>
+    ///   Loaded icon for display in GUIs
+    /// </summary>
+    [JsonIgnore]
+    public Texture2D? LoadedIcon;
 
-	/// <summary>
-	///   Density of this organelle. Note that densities should fall into just a few categories to ensure that cached
-	///   microbe collision shapes can be reused more widely
-	/// </summary>
-	public float Density = 1000;
+    /// <summary>
+    ///   Density of this organelle. Note that densities should fall into just a few categories to ensure that cached
+    ///   microbe collision shapes can be reused more widely
+    /// </summary>
+    public float Density = 1000;
 
-	/// <summary>
-	///   How much the density of this organelle contributes. Should be set to 0 for pilus and other organelles that
-	///   have separate physics shapes created for them. Bigger organelles should have larger values to make them
-	///   impact the overall physics mass more. Similarly to <see cref="Density"/> this should also have only a few
-	///   used values among all organelles to make shape caching more effective (as the cache depends on density).
-	/// </summary>
-	public float RelativeDensityVolume = 1;
+    /// <summary>
+    ///   How much the density of this organelle contributes. Should be set to 0 for pilus and other organelles that
+    ///   have separate physics shapes created for them. Bigger organelles should have larger values to make them
+    ///   impact the overall physics mass more. Similarly to <see cref="Density"/> this should also have only a few
+    ///   used values among all organelles to make shape caching more effective (as the cache depends on density).
+    /// </summary>
+    public float RelativeDensityVolume = 1;
 
-	/// <summary>
-	///   Controls if Auto-Evo can place this organelle as a mutation
-	/// </summary>
-	public bool AutoEvoCanPlace = true;
+    /// <summary>
+    ///   Controls if Auto-Evo can place this organelle as a mutation
+    /// </summary>
+    public bool AutoEvoCanPlace = true;
 
-	/// <summary>
-	///   If set to true this part is unimplemented and isn't loadable (and not all properties are required)
-	/// </summary>
-	public bool Unimplemented;
+    /// <summary>
+    ///   If set to true this part is unimplemented and isn't loadable (and not all properties are required)
+    /// </summary>
+    public bool Unimplemented;
 
-	/// <summary>
-	///   The group of buttons under which the button to select to place this organelle is put
-	/// </summary>
-	[JsonRequired]
-	public OrganelleGroup EditorButtonGroup = OrganelleGroup.Hidden;
+    /// <summary>
+    ///   The group of buttons under which the button to select to place this organelle is put
+    /// </summary>
+    [JsonRequired]
+    public OrganelleGroup EditorButtonGroup = OrganelleGroup.Hidden;
 
-	/// <summary>
-	///   Controls the order of editor organelle selection buttons within a single section. Smaller values are first
-	/// </summary>
-	public int EditorButtonOrder;
+    /// <summary>
+    ///   Controls the order of editor organelle selection buttons within a single section. Smaller values are first
+    /// </summary>
+    public int EditorButtonOrder;
 
-	/// <summary>
-	///   How good organelle is at breaking down iron using siderophore
-	/// </summary>
-	public int IronBreakdownEfficiency;
+    /// <summary>
+    ///   How good organelle is at breaking down iron using siderophore
+    /// </summary>
+    public int IronBreakdownEfficiency;
 
-	public OrganelleComponentFactoryInfo Components = new();
+    public OrganelleComponentFactoryInfo Components = new();
 
-	/// <summary>
-	///   Lightweight feature tags that this organelle has. This is used for simple features that don't need the full
-	///   features that <see cref="Components"/> provides.
-	/// </summary>
-	public OrganelleFeatureTag[] FeatureTags = Array.Empty<OrganelleFeatureTag>();
+    /// <summary>
+    ///   Lightweight feature tags that this organelle has. This is used for simple features that don't need the full
+    ///   features that <see cref="Components"/> provides.
+    /// </summary>
+    public OrganelleFeatureTag[] FeatureTags = Array.Empty<OrganelleFeatureTag>();
 
-	/// <summary>
-	///   Defines the processes this organelle does and their speed multipliers
-	/// </summary>
-	public Dictionary<string, float>? Processes;
+    /// <summary>
+    ///   Defines the processes this organelle does and their speed multipliers
+    /// </summary>
+    public Dictionary<string, float>? Processes;
 
-	/// <summary>
-	///   List of hexes this organelle occupies
-	/// </summary>
-	public List<Hex> Hexes = null!;
+    /// <summary>
+    ///   List of hexes this organelle occupies
+    /// </summary>
+    public List<Hex> Hexes = null!;
 
-	[JsonProperty(PropertyName = "enzymes")]
-	public Dictionary<string, int>? RawEnzymes;
+    [JsonProperty(PropertyName = "enzymes")]
+    public Dictionary<string, int>? RawEnzymes;
 
-	/// <summary>
-	///   Enzymes contained in this organelle
-	/// </summary>
-	[JsonIgnore]
-	public Dictionary<Enzyme, int> Enzymes = new();
+    /// <summary>
+    ///   Enzymes contained in this organelle
+    /// </summary>
+    [JsonIgnore]
+    public Dictionary<Enzyme, int> Enzymes = new();
 
-	/// <summary>
-	///   The compounds this organelle consists of (how many resources are needed to duplicate this)
-	/// </summary>
-	public Dictionary<Compound, float> InitialComposition = null!;
+    /// <summary>
+    ///   The compounds this organelle consists of (how many resources are needed to duplicate this)
+    /// </summary>
+    public Dictionary<Compound, float> InitialComposition = null!;
 
-	public Dictionary<ToleranceModifier, float> ToleranceEffects = new();
+    public Dictionary<ToleranceModifier, float> ToleranceEffects = new();
 
-	/// <summary>
-	///   Colour used for ATP production bar
-	/// </summary>
-	public string ProductionColour = null!;
+    /// <summary>
+    ///   Colour used for ATP production bar
+    /// </summary>
+    public string ProductionColour = null!;
 
-	/// <summary>
-	///   Colour used for ATP consumption bar
-	/// </summary>
-	public string ConsumptionColour = null!;
+    /// <summary>
+    ///   Colour used for ATP consumption bar
+    /// </summary>
+    public string ConsumptionColour = null!;
 
-	/// <summary>
-	///   Icon used for the ATP bars and editor selection buttons. Required if placeable by the player
-	/// </summary>
-	public string? IconPath;
+    /// <summary>
+    ///   Icon used for the ATP bars and editor selection buttons. Required if placeable by the player
+    /// </summary>
+    public string? IconPath;
 
-	/// <summary>
-	///   Cost of placing this organelle in the editor (in mutation points)
-	/// </summary>
-	public int MPCost;
+    /// <summary>
+    ///   Cost of placing this organelle in the editor (in mutation points)
+    /// </summary>
+    public int MPCost;
 
-	/// <summary>
-	///   Controls whether this organelle scales with growth progress (progress towards division and reproduction).
-	/// </summary>
-	public bool ShouldScale = true;
+    /// <summary>
+    ///   Controls whether this organelle scales with growth progress (progress towards division and reproduction).
+    /// </summary>
+    public bool ShouldScale = true;
 
-	/// <summary>
-	///   Flags whether this organelle is exclusive for eukaryotes
-	/// </summary>
-	public bool RequiresNucleus;
+    /// <summary>
+    ///   Flags whether this organelle is exclusive for eukaryotes
+    /// </summary>
+    public bool RequiresNucleus;
 
-	/// <summary>
-	///   Can this organelle only be placed once
-	/// </summary>
-	public bool Unique;
+    /// <summary>
+    ///   Can this organelle only be placed once
+    /// </summary>
+    public bool Unique;
 
-	/// <summary>
-	///   Determines whether this organelle appears in LAWK-only games
-	/// </summary>
-	public bool LAWK = true;
+    /// <summary>
+    ///   Determines whether this organelle appears in LAWK-only games
+    /// </summary>
+    public bool LAWK = true;
 
-	/// <summary>
-	///   Path to a scene that is used to modify / upgrade the organelle. If not set the organelle is not modifiable.
-	/// </summary>
-	public string? UpgradeGUI;
+    /// <summary>
+    ///   Path to a scene that is used to modify / upgrade the organelle. If not set the organelle is not modifiable.
+    /// </summary>
+    public string? UpgradeGUI;
 
-	/// <summary>
-	///   If set to true then <see cref="AvailableUpgrades"/> won't be displayed by the default upgrader control, but
-	///   everything must be handled by <see cref="UpgradeGUI"/>.
-	/// </summary>
-	public bool UpgraderSkipDefaultControls;
+    /// <summary>
+    ///   If set to true then <see cref="AvailableUpgrades"/> won't be displayed by the default upgrader control, but
+    ///   everything must be handled by <see cref="UpgradeGUI"/>.
+    /// </summary>
+    public bool UpgraderSkipDefaultControls;
 
-	/// <summary>
-	///   The upgrades that are available for this organelle type
-	/// </summary>
-	public Dictionary<string, AvailableUpgrade> AvailableUpgrades = new();
+    /// <summary>
+    ///   The upgrades that are available for this organelle type
+    /// </summary>
+    public Dictionary<string, AvailableUpgrade> AvailableUpgrades = new();
 
-	/// <summary>
-	///  The name of the default ("none") upgrade, if needed
-	/// </summary>
-	public string? DefaultUpgradeName;
+    /// <summary>
+    ///  The name of the default ("none") upgrade, if needed
+    /// </summary>
+    public string? DefaultUpgradeName;
 
-	/// <summary>
-	///   The possible conditions where a player can unlock this organelle.
-	/// </summary>
-	public List<ConditionSet>? UnlockConditions;
+    /// <summary>
+    ///   The possible conditions where a player can unlock this organelle.
+    /// </summary>
+    public List<ConditionSet>? UnlockConditions;
 
-	/// <summary>
-	///   What organelle does this organelle turn into when doing endosymbiosis. See
-	///   <see cref="MicrobeInternalCalculations.CalculatePossibleEndosymbiontsFromSpecies"/>.
-	/// </summary>
-	[JsonIgnore]
-	public OrganelleDefinition? EndosymbiosisUnlocks;
+    /// <summary>
+    ///   What organelle does this organelle turn into when doing endosymbiosis. See
+    ///   <see cref="MicrobeInternalCalculations.CalculatePossibleEndosymbiontsFromSpecies"/>.
+    /// </summary>
+    [JsonIgnore]
+    public OrganelleDefinition? EndosymbiosisUnlocks;
 
-	/// <summary>
-	///   Placement strategy that is used when placing this organelle when calculating an auto-evo organelle suggestion
-	///   for the player
-	/// </summary>
-	public CommonMutationFunctions.OrganelleAddStrategy SuggestionPlacement =
-		CommonMutationFunctions.OrganelleAddStrategy.Spiral;
+    /// <summary>
+    ///   Placement strategy that is used when placing this organelle when calculating an auto-evo organelle suggestion
+    ///   for the player
+    /// </summary>
+    public CommonMutationFunctions.OrganelleAddStrategy SuggestionPlacement =
+        CommonMutationFunctions.OrganelleAddStrategy.Spiral;
 
-	/// <summary>
-	///   Caches the rotated hexes
-	/// </summary>
-	private readonly Dictionary<int, List<Hex>> rotatedHexesCache = new();
+    /// <summary>
+    ///   Caches the rotated hexes
+    /// </summary>
+    private readonly Dictionary<int, List<Hex>> rotatedHexesCache = new();
 
 #pragma warning disable 169,649 // Used through reflection
-	private string? untranslatedName;
+    private string? untranslatedName;
 #pragma warning restore 169,649
 
-	/// <summary>
-	///   A path to a scene to display this organelle with. If empty won't have a display model.
-	/// </summary>
-	[JsonProperty]
-	private SceneWithModelInfo graphics;
+    /// <summary>
+    ///   A path to a scene to display this organelle with. If empty won't have a display model.
+    /// </summary>
+    [JsonProperty]
+    private SceneWithModelInfo graphics;
 
-	/// <summary>
-	///   How to display this organelle as a corpse chunk. Not needed if it is the same as <see cref="graphics"/>.
-	/// </summary>
-	[JsonProperty]
-	private SceneWithModelInfo corpseChunkGraphics;
+    /// <summary>
+    ///   How to display this organelle as a corpse chunk. Not needed if it is the same as <see cref="graphics"/>.
+    /// </summary>
+    [JsonProperty]
+    private SceneWithModelInfo corpseChunkGraphics;
 
-	private LoadedSceneWithModelInfo loadedSceneData;
-	private LoadedSceneWithModelInfo loadedCorpseScene;
+    private LoadedSceneWithModelInfo loadedSceneData;
+    private LoadedSceneWithModelInfo loadedCorpseScene;
 
-	[JsonProperty]
-	private string? endosymbiosisUnlocks;
-
-	private Vector3 modelOffset;
+    [JsonProperty]
+    private string? endosymbiosisUnlocks;
+
+    private Vector3 modelOffset;
 
-	private bool hasProcessAffectingUpgrades;
-
-	public enum OrganelleGroup
-	{
-		/// <summary>
-		///   Not shown in the GUI, not placeable by the player
-		/// </summary>
-		Hidden,
+    private bool hasProcessAffectingUpgrades;
+
+    public enum OrganelleGroup
+    {
+        /// <summary>
+        ///   Not shown in the GUI, not placeable by the player
+        /// </summary>
+        Hidden,
 
-		Structural,
-		Protein,
-		External,
-		Organelle,
-
-		/// <summary>
-		///   Only available starting in multicellular
-		/// </summary>
-		Multicellular,
-
-		/// <summary>
-		///   Only available starting in macroscopic
-		/// </summary>
-		Macroscopic,
-	}
-
-	/// <summary>
-	///   <see cref="Name"/> without any special characters (line changes etc.)
-	/// </summary>
-	[JsonIgnore]
-	public string NameWithoutSpecialCharacters => Name.Replace('\n', ' ');
-
-	/// <summary>
-	///   The total amount of compounds in InitialComposition
-	/// </summary>
-	[JsonIgnore]
-	public float OrganelleCost { get; private set; }
-
-	[JsonIgnore]
-	public List<IOrganelleComponentFactory> ComponentFactories => Components.Factories;
-
-	[JsonIgnore]
-	public List<TweakedProcess> RunnableProcesses { get; private set; } = null!;
-
-	[JsonIgnore]
-	public int HexCount => Hexes.Count;
-
-	[JsonIgnore]
-	public Vector3 ModelOffset => modelOffset;
-
-	// Faster checks for specific components
-	public bool HasPilusComponent { get; private set; }
-	public bool HasMovementComponent { get; private set; }
-	public bool HasCiliaComponent { get; private set; }
-
-	public bool HasHydrogenSulfideProtection { get; private set; }
-
-	/// <summary>
-	///   True if this is an agent vacuole. The number of agent vacuoles determines how often a cell can shoot toxins.
-	/// </summary>
-	public bool HasAgentVacuoleComponent { get; private set; }
-
-	public bool HasSlimeJetComponent { get; private set; }
-
-	public bool HasBindingFeature { get; private set; }
-
-	public bool HasSignalingFeature { get; private set; }
-
-	public bool HasLysosomeComponent { get; private set; }
-
-	public bool HasChemoreceptorComponent { get; private set; }
-
-	/// <summary>
-	///   True when this organelle is one that uses oxygen as a process input (and is metabolism-related). This is
-	///   used to adjust toxin effects that have a distinction between oxygen breathers and others.
-	/// </summary>
-	public bool IsOxygenMetabolism { get; private set; }
-
-	public bool HasRadiationProtection { get; private set; }
-
-	public bool HasHeatCollection { get; private set; }
-
-	// Easy access to precalculated total tolerance modifiers
-	public float ToleranceModifierOxygen { get; private set; }
-	public float ToleranceModifierUV { get; private set; }
-	public float ToleranceModifierPressureRange { get; private set; }
-	public float ToleranceModifierTemperatureRange { get; private set; }
-
-	/// <summary>
-	///   True if this has any modifier on tolerances (used to early skip processing organelles that don't affect
-	///   anything)
-	/// </summary>
-	[JsonIgnore]
-	public bool AffectsTolerances { get; private set; }
-
-	[JsonIgnore]
-	public string UntranslatedName =>
-		untranslatedName ?? throw new InvalidOperationException("Translations not initialized");
-
-	[JsonIgnore]
-	public override ArchiveObjectType ArchiveObjectType =>
-		(ArchiveObjectType)ThriveArchiveObjectType.OrganelleDefinition;
-
-	public static object ReadFromArchive(ISArchiveReader reader, ushort version, int referenceId)
-	{
-		return SimulationParameters.Instance.GetOrganelleType(ReadInternalName(reader, version));
-	}
-
-	/// <summary>
-	///   Gets the visual scene that should be used to represent this organelle (if there is one)
-	/// </summary>
-	/// <param name="upgrades">
-	///   Some upgrades alter organelle visuals, so when upgrades are set for this organelle they should be passed here
-	///   to get the right visuals
-	/// </param>
-	/// <param name="modelInfo">
-	///   The model info returned like this (as it may be a struct type, this can't return a nullable reference without
-	///   boxing)
-	/// </param>
-	/// <returns>True when this has a scene</returns>
-	public bool TryGetGraphicsScene(IReadOnlyOrganelleUpgrades? upgrades, out LoadedSceneWithModelInfo modelInfo)
-	{
-		if (TryGetGraphicsForUpgrade(upgrades, out modelInfo))
-		{
-			return true;
-		}
-
-		if (loadedSceneData.LoadedScene == null!)
-		{
-			return false;
-		}
-
-		modelInfo = loadedSceneData;
-		return true;
-	}
-
-	public bool TryGetCorpseChunkGraphics(IReadOnlyOrganelleUpgrades? upgrades, out LoadedSceneWithModelInfo modelInfo)
-	{
-		if (TryGetGraphicsForUpgrade(upgrades, out modelInfo))
-		{
-			return true;
-		}
-
-		if (loadedCorpseScene.LoadedScene == null!)
-		{
-			return false;
-		}
-
-		modelInfo = loadedCorpseScene;
-		return true;
-	}
-
-	/// <summary>
-	///   True if a chunk's visuals can be the result of this organelle being in a species that died
-	/// </summary>
-	/// <returns>True if the <see cref="chunk"/> matches visuals of this</returns>
-	/// <remarks>
-	///   <para>
-	///     Note that this doesn't check upgrade visuals as those can't be used in marine snow.
-	///   </para>
-	/// </remarks>
-	public bool MatchesMarineSnow(ChunkConfiguration.ChunkScene chunk)
-	{
-		if (graphics.ScenePath == chunk.ScenePath)
-			return true;
-
-		// For performance, we could probably skip this check, but let's avoid a future bug here by also checking this
-		if (corpseChunkGraphics.ScenePath == chunk.ScenePath)
-			return true;
-
-		return false;
-	}
-
-	public Vector3 GetUpgradesSizeModification(IReadOnlyOrganelleUpgrades? upgrades)
-	{
-		var scale = Constants.DEFAULT_HEX_SIZE;
-		var scaleZ = scale;
-
-		if (upgrades?.CustomUpgradeData is FlagellumUpgrades flagellumUpgrades)
-		{
-			var flagellumLength = flagellumUpgrades.LengthFraction;
-
-			scaleZ = Constants.FLAGELLA_MAX_UPGRADE_VISUAL_LENGTH * flagellumLength
-				+ Constants.FLAGELLA_MIN_UPGRADE_VISUAL_LENGTH;
-		}
-
-		return new Vector3(scale, scale, scaleZ);
-	}
-
-	public bool ContainsHex(Hex hex)
-	{
-		foreach (var existingHex in Hexes)
-		{
-			if (existingHex.Equals(hex))
-				return true;
-		}
-
-		return false;
-	}
-
-	/// <summary>
-	///   Returns The hexes but rotated (rotation is the number of 60 degree rotations)
-	/// </summary>
-	public IReadOnlyList<Hex> GetRotatedHexes(int rotation)
-	{
-		// The rotations repeat every 6 steps
-		rotation %= 6;
-
-		if (!rotatedHexesCache.TryGetValue(rotation, out var rotated))
-		{
-			rotated = new List<Hex>();
-
-			foreach (var hex in Hexes)
-			{
-				rotated.Add(Hex.RotateAxialNTimes(hex, rotation));
-			}
-
-			rotatedHexesCache[rotation] = rotated;
-		}
-
-		return rotated;
-	}
-
-	/// <summary>
-	///   Returns true when this has the specified component factory.
-	///   For example <see cref="MovementComponentFactory"/>.
-	/// </summary>
-	/// <remarks>
-	///   <para>
-	///     This checks for the *factory* class. For performance reasons a few components are available as direct
-	///     boolean properties, if a component you want to check for has such a boolean defined for it, use those
-	///     instead of this general interface.
-	///   </para>
-	///   <para>
-	///     It used to be the case that there was a variant on <see cref="PlacedOrganelle"/> checking the actual
-	///     component type, but that was phased out due to runtime performance concerns.
-	///   </para>
-	/// </remarks>
-	public bool HasComponentFactory<T>()
-		where T : IOrganelleComponentFactory
-	{
-		foreach (var factory in ComponentFactories)
-		{
-			if (factory is T)
-				return true;
-		}
-
-		return false;
-	}
-
-	/// <summary>
-	///   Returns true when this has the specified organelle feature tag. These are lightweight alternative markers for
-	///   supported features compared to <see cref="HasComponentFactory{T}"/>
-	/// </summary>
-	/// <returns>True when this has the feature</returns>
-	public bool HasFeatureTag(OrganelleFeatureTag featureTag)
-	{
-		foreach (var feature in FeatureTags)
-		{
-			if (featureTag == feature)
-				return true;
-		}
-
-		return false;
-	}
-
-	/// <summary>
-	///   Gets a list of processes to run instead of <see cref="RunnableProcesses"/> given the upgrades, or null if no
-	///   upgrade affects the processes
-	/// </summary>
-	/// <returns>Upgraded processes</returns>
-	public List<TweakedProcess>? GetUpgradeProcesses(IReadOnlyOrganelleUpgrades upgrades)
-	{
-		// Early return for types that don't support such upgrades for efficiency
-		if (!hasProcessAffectingUpgrades)
-			return null;
-
-		foreach (var availableUpgrade in AvailableUpgrades)
-		{
-			if (upgrades.UnlockedFeatures.Contains(availableUpgrade.Key) &&
-				availableUpgrade.Value.OverrideProcesses != null)
-			{
-				// Found an unlocked upgrade that affects processes. For now, it is assumed that the first one doing
-				// the overriding is fine to apply
-				return availableUpgrade.Value.OverrideProcesses;
-			}
-		}
-
-		// No upgrade with changed processes
-		return null;
-	}
-
-	public override void Check(string name)
-	{
-		if (string.IsNullOrEmpty(Name))
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "Name is not set");
-		}
-
-		TranslationHelper.CopyTranslateTemplatesToTranslateSource(this);
-
-		if (Unimplemented)
-			return;
-
-		Components.Check(name);
-
-		// Components list is now allowed to be empty as some organelles do not need any components
-
-		if (string.IsNullOrEmpty(Description))
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "Description is not set or empty");
-		}
-
-		if (Density < 100)
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "Density is unset or unrealistically low");
-		}
-
-		if (InitialComposition == null || InitialComposition.Count < 1)
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "InitialComposition is not set");
-		}
-
-		foreach (var entry in InitialComposition)
-		{
-			if (entry.Value <= MathUtils.EPSILON)
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"InitialComposition has negative or really small value");
-			}
-
-			if (!SimulationParameters.Instance.GetCompoundDefinition(entry.Key).IsCloud)
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"InitialComposition has a compound that can't be a cloud");
-			}
-		}
-
-		if (Hexes == null || Hexes.Count < 1)
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "Hexes is empty");
-		}
-
-		if (string.IsNullOrEmpty(graphics.ScenePath) && string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name,
-				"Both DisplayScene and CorpseChunkScene are null");
-		}
-
-		if (Hexes[0] != new Hex(0, 0))
-			throw new InvalidRegistryDataException(name, GetType().Name, "First hex position must be (0, 0)");
-
-		// Check for duplicate position hexes
-		for (int i = 0; i < Hexes.Count; ++i)
-		{
-			bool duplicate = false;
-
-			for (int j = i + 1; j < Hexes.Count; ++j)
-			{
-				if (Hexes[i].Equals(Hexes[j]))
-				{
-					duplicate = true;
-					break;
-				}
-			}
-
-			if (duplicate)
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"Duplicate hex position");
-			}
-		}
-
-		foreach (var availableUpgrade in AvailableUpgrades)
-		{
-			availableUpgrade.Value.InternalName = availableUpgrade.Key;
-			availableUpgrade.Value.Check(availableUpgrade.Key);
-
-			if ((availableUpgrade.Key == Constants.ORGANELLE_UPGRADE_SPECIAL_NONE &&
-					!availableUpgrade.Value.IsDefault) ||
-				(availableUpgrade.Key != Constants.ORGANELLE_UPGRADE_SPECIAL_NONE && availableUpgrade.Value.IsDefault))
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"Default upgrade must be named 'none', and the name must not be used by other upgrades");
-			}
-		}
-
-		// Fail with multiple default upgrades
-		if (AvailableUpgrades.Values.Count(u => u.IsDefault) > 1)
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name, "Multiple default upgrades specified");
-		}
-
-		if (UpgraderSkipDefaultControls && string.IsNullOrEmpty(UpgradeGUI))
-		{
-			throw new InvalidRegistryDataException(name, GetType().Name,
-				"Upgrader scene is required when default upgrade controls are suppressed");
-		}
-
-		// Check unlock conditions
-		if (UnlockConditions != null)
-		{
-			foreach (var set in UnlockConditions)
-				set.Check(name);
-		}
-
-		foreach (var effect in ToleranceEffects)
-		{
-			if (float.IsNaN(effect.Value) || !float.IsNormal(effect.Value))
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"Tolerance effect value is not a valid number");
-			}
-		}
+        Structural,
+        Protein,
+        External,
+        Organelle,
+
+        /// <summary>
+        ///   Only available starting in multicellular
+        /// </summary>
+        Multicellular,
+
+        /// <summary>
+        ///   Only available starting in macroscopic
+        /// </summary>
+        Macroscopic,
+    }
+
+    /// <summary>
+    ///   <see cref="Name"/> without any special characters (line changes etc.)
+    /// </summary>
+    [JsonIgnore]
+    public string NameWithoutSpecialCharacters => Name.Replace('\n', ' ');
+
+    /// <summary>
+    ///   The total amount of compounds in InitialComposition
+    /// </summary>
+    [JsonIgnore]
+    public float OrganelleCost { get; private set; }
+
+    [JsonIgnore]
+    public List<IOrganelleComponentFactory> ComponentFactories => Components.Factories;
+
+    [JsonIgnore]
+    public List<TweakedProcess> RunnableProcesses { get; private set; } = null!;
+
+    [JsonIgnore]
+    public int HexCount => Hexes.Count;
+
+    [JsonIgnore]
+    public Vector3 ModelOffset => modelOffset;
+
+    // Faster checks for specific components
+    public bool HasPilusComponent { get; private set; }
+    public bool HasMovementComponent { get; private set; }
+    public bool HasCiliaComponent { get; private set; }
+
+    public bool HasHydrogenSulfideProtection { get; private set; }
+
+    /// <summary>
+    ///   True if this is an agent vacuole. The number of agent vacuoles determines how often a cell can shoot toxins.
+    /// </summary>
+    public bool HasAgentVacuoleComponent { get; private set; }
+
+    public bool HasSlimeJetComponent { get; private set; }
+
+    public bool HasBindingFeature { get; private set; }
+
+    public bool HasSignalingFeature { get; private set; }
+
+    public bool HasLysosomeComponent { get; private set; }
+
+    public bool HasChemoreceptorComponent { get; private set; }
+
+    /// <summary>
+    ///   True when this organelle is one that uses oxygen as a process input (and is metabolism-related). This is
+    ///   used to adjust toxin effects that have a distinction between oxygen breathers and others.
+    /// </summary>
+    public bool IsOxygenMetabolism { get; private set; }
+
+    public bool HasRadiationProtection { get; private set; }
+
+    public bool HasHeatCollection { get; private set; }
+
+    // Easy access to precalculated total tolerance modifiers
+    public float ToleranceModifierOxygen { get; private set; }
+    public float ToleranceModifierUV { get; private set; }
+    public float ToleranceModifierPressureRange { get; private set; }
+    public float ToleranceModifierTemperatureRange { get; private set; }
+
+    /// <summary>
+    ///   True if this has any modifier on tolerances (used to early skip processing organelles that don't affect
+    ///   anything)
+    /// </summary>
+    [JsonIgnore]
+    public bool AffectsTolerances { get; private set; }
+
+    [JsonIgnore]
+    public string UntranslatedName =>
+        untranslatedName ?? throw new InvalidOperationException("Translations not initialized");
+
+    [JsonIgnore]
+    public override ArchiveObjectType ArchiveObjectType =>
+        (ArchiveObjectType)ThriveArchiveObjectType.OrganelleDefinition;
+
+    public static object ReadFromArchive(ISArchiveReader reader, ushort version, int referenceId)
+    {
+        return SimulationParameters.Instance.GetOrganelleType(ReadInternalName(reader, version));
+    }
+
+    /// <summary>
+    ///   Gets the visual scene that should be used to represent this organelle (if there is one)
+    /// </summary>
+    /// <param name="upgrades">
+    ///   Some upgrades alter organelle visuals, so when upgrades are set for this organelle they should be passed here
+    ///   to get the right visuals
+    /// </param>
+    /// <param name="modelInfo">
+    ///   The model info returned like this (as it may be a struct type, this can't return a nullable reference without
+    ///   boxing)
+    /// </param>
+    /// <returns>True when this has a scene</returns>
+    public bool TryGetGraphicsScene(IReadOnlyOrganelleUpgrades? upgrades, out LoadedSceneWithModelInfo modelInfo)
+    {
+        if (TryGetGraphicsForUpgrade(upgrades, out modelInfo))
+        {
+            return true;
+        }
+
+        if (loadedSceneData.LoadedScene == null!)
+        {
+            return false;
+        }
+
+        modelInfo = loadedSceneData;
+        return true;
+    }
+
+    public bool TryGetCorpseChunkGraphics(IReadOnlyOrganelleUpgrades? upgrades, out LoadedSceneWithModelInfo modelInfo)
+    {
+        if (TryGetGraphicsForUpgrade(upgrades, out modelInfo))
+        {
+            return true;
+        }
+
+        if (loadedCorpseScene.LoadedScene == null!)
+        {
+            return false;
+        }
+
+        modelInfo = loadedCorpseScene;
+        return true;
+    }
+
+    /// <summary>
+    ///   True if a chunk's visuals can be the result of this organelle being in a species that died
+    /// </summary>
+    /// <returns>True if the <see cref="chunk"/> matches visuals of this</returns>
+    /// <remarks>
+    ///   <para>
+    ///     Note that this doesn't check upgrade visuals as those can't be used in marine snow.
+    ///   </para>
+    /// </remarks>
+    public bool MatchesMarineSnow(ChunkConfiguration.ChunkScene chunk)
+    {
+        if (graphics.ScenePath == chunk.ScenePath)
+            return true;
+
+        // For performance, we could probably skip this check, but let's avoid a future bug here by also checking this
+        if (corpseChunkGraphics.ScenePath == chunk.ScenePath)
+            return true;
+
+        return false;
+    }
+
+    public Vector3 GetUpgradesSizeModification(IReadOnlyOrganelleUpgrades? upgrades)
+    {
+        var scale = Constants.DEFAULT_HEX_SIZE;
+        var scaleZ = scale;
+
+        if (upgrades?.CustomUpgradeData is FlagellumUpgrades flagellumUpgrades)
+        {
+            var flagellumLength = flagellumUpgrades.LengthFraction;
+
+            scaleZ = Constants.FLAGELLA_MAX_UPGRADE_VISUAL_LENGTH * flagellumLength
+                + Constants.FLAGELLA_MIN_UPGRADE_VISUAL_LENGTH;
+        }
+
+        return new Vector3(scale, scale, scaleZ);
+    }
+
+    public bool ContainsHex(Hex hex)
+    {
+        foreach (var existingHex in Hexes)
+        {
+            if (existingHex.Equals(hex))
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///   Returns The hexes but rotated (rotation is the number of 60 degree rotations)
+    /// </summary>
+    public IReadOnlyList<Hex> GetRotatedHexes(int rotation)
+    {
+        // The rotations repeat every 6 steps
+        rotation %= 6;
+
+        if (!rotatedHexesCache.TryGetValue(rotation, out var rotated))
+        {
+            rotated = new List<Hex>();
+
+            foreach (var hex in Hexes)
+            {
+                rotated.Add(Hex.RotateAxialNTimes(hex, rotation));
+            }
+
+            rotatedHexesCache[rotation] = rotated;
+        }
+
+        return rotated;
+    }
+
+    /// <summary>
+    ///   Returns true when this has the specified component factory.
+    ///   For example <see cref="MovementComponentFactory"/>.
+    /// </summary>
+    /// <remarks>
+    ///   <para>
+    ///     This checks for the *factory* class. For performance reasons a few components are available as direct
+    ///     boolean properties, if a component you want to check for has such a boolean defined for it, use those
+    ///     instead of this general interface.
+    ///   </para>
+    ///   <para>
+    ///     It used to be the case that there was a variant on <see cref="PlacedOrganelle"/> checking the actual
+    ///     component type, but that was phased out due to runtime performance concerns.
+    ///   </para>
+    /// </remarks>
+    public bool HasComponentFactory<T>()
+        where T : IOrganelleComponentFactory
+    {
+        foreach (var factory in ComponentFactories)
+        {
+            if (factory is T)
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///   Returns true when this has the specified organelle feature tag. These are lightweight alternative markers for
+    ///   supported features compared to <see cref="HasComponentFactory{T}"/>
+    /// </summary>
+    /// <returns>True when this has the feature</returns>
+    public bool HasFeatureTag(OrganelleFeatureTag featureTag)
+    {
+        foreach (var feature in FeatureTags)
+        {
+            if (featureTag == feature)
+                return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    ///   Gets a list of processes to run instead of <see cref="RunnableProcesses"/> given the upgrades, or null if no
+    ///   upgrade affects the processes
+    /// </summary>
+    /// <returns>Upgraded processes</returns>
+    public List<TweakedProcess>? GetUpgradeProcesses(IReadOnlyOrganelleUpgrades upgrades)
+    {
+        // Early return for types that don't support such upgrades for efficiency
+        if (!hasProcessAffectingUpgrades)
+            return null;
+
+        foreach (var availableUpgrade in AvailableUpgrades)
+        {
+            if (upgrades.UnlockedFeatures.Contains(availableUpgrade.Key) &&
+                availableUpgrade.Value.OverrideProcesses != null)
+            {
+                // Found an unlocked upgrade that affects processes. For now, it is assumed that the first one doing
+                // the overriding is fine to apply
+                return availableUpgrade.Value.OverrideProcesses;
+            }
+        }
+
+        // No upgrade with changed processes
+        return null;
+    }
+
+    public override void Check(string name)
+    {
+        if (string.IsNullOrEmpty(Name))
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "Name is not set");
+        }
+
+        TranslationHelper.CopyTranslateTemplatesToTranslateSource(this);
+
+        if (Unimplemented)
+            return;
+
+        Components.Check(name);
+
+        // Components list is now allowed to be empty as some organelles do not need any components
+
+        if (string.IsNullOrEmpty(Description))
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "Description is not set or empty");
+        }
+
+        if (Density < 100)
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "Density is unset or unrealistically low");
+        }
+
+        if (InitialComposition == null || InitialComposition.Count < 1)
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "InitialComposition is not set");
+        }
+
+        foreach (var entry in InitialComposition)
+        {
+            if (entry.Value <= MathUtils.EPSILON)
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "InitialComposition has negative or really small value");
+            }
+
+            if (!SimulationParameters.Instance.GetCompoundDefinition(entry.Key).IsCloud)
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "InitialComposition has a compound that can't be a cloud");
+            }
+        }
+
+        if (Hexes == null || Hexes.Count < 1)
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "Hexes is empty");
+        }
+
+        if (string.IsNullOrEmpty(graphics.ScenePath) && string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name,
+                "Both DisplayScene and CorpseChunkScene are null");
+        }
+
+        if (Hexes[0] != new Hex(0, 0))
+            throw new InvalidRegistryDataException(name, GetType().Name, "First hex position must be (0, 0)");
+
+        // Check for duplicate position hexes
+        for (int i = 0; i < Hexes.Count; ++i)
+        {
+            bool duplicate = false;
+
+            for (int j = i + 1; j < Hexes.Count; ++j)
+            {
+                if (Hexes[i].Equals(Hexes[j]))
+                {
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if (duplicate)
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "Duplicate hex position");
+            }
+        }
+
+        foreach (var availableUpgrade in AvailableUpgrades)
+        {
+            availableUpgrade.Value.InternalName = availableUpgrade.Key;
+            availableUpgrade.Value.Check(availableUpgrade.Key);
+
+            if ((availableUpgrade.Key == Constants.ORGANELLE_UPGRADE_SPECIAL_NONE &&
+                    !availableUpgrade.Value.IsDefault) ||
+                (availableUpgrade.Key != Constants.ORGANELLE_UPGRADE_SPECIAL_NONE && availableUpgrade.Value.IsDefault))
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "Default upgrade must be named 'none', and the name must not be used by other upgrades");
+            }
+        }
+
+        // Fail with multiple default upgrades
+        if (AvailableUpgrades.Values.Count(u => u.IsDefault) > 1)
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name, "Multiple default upgrades specified");
+        }
+
+        if (UpgraderSkipDefaultControls && string.IsNullOrEmpty(UpgradeGUI))
+        {
+            throw new InvalidRegistryDataException(name, GetType().Name,
+                "Upgrader scene is required when default upgrade controls are suppressed");
+        }
+
+        // Check unlock conditions
+        if (UnlockConditions != null)
+        {
+            foreach (var set in UnlockConditions)
+                set.Check(name);
+        }
+
+        foreach (var effect in ToleranceEffects)
+        {
+            if (float.IsNaN(effect.Value) || !float.IsNormal(effect.Value))
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "Tolerance effect value is not a valid number");
+            }
+        }
 
 #if DEBUG
-		if (!string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
-		{
-			if (!ResourceLoader.Exists(corpseChunkGraphics.ScenePath))
-			{
-				throw new InvalidRegistryDataException(name, GetType().Name,
-					"Corpse chunk scene path doesn't exist");
-			}
-		}
+        if (!string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
+        {
+            if (!ResourceLoader.Exists(corpseChunkGraphics.ScenePath))
+            {
+                throw new InvalidRegistryDataException(name, GetType().Name,
+                    "Corpse chunk scene path doesn't exist");
+            }
+        }
 #endif
-	}
+    }
 
-	/// <summary>
-	///   Resolves references to external resources so that during runtime they don't need to be looked up
-	/// </summary>
-	public void Resolve(SimulationParameters parameters)
-	{
-		CalculateModelOffset();
+    /// <summary>
+    ///   Resolves references to external resources so that during runtime they don't need to be looked up
+    /// </summary>
+    public void Resolve(SimulationParameters parameters)
+    {
+        CalculateModelOffset();
 
-		IsOxygenMetabolism = false;
+        IsOxygenMetabolism = false;
 
-		RunnableProcesses = new List<TweakedProcess>();
+        RunnableProcesses = new List<TweakedProcess>();
 
-		// Preload the scene for instantiating in microbes
-		// TODO: switch this to only load when loading the microbe stage to not load this in the future when we have
-		// playable stages that don't need these graphics
-		if (!string.IsNullOrEmpty(graphics.ScenePath))
-		{
-			loadedSceneData.LoadFrom(graphics);
-		}
+        // Preload the scene for instantiating in microbes
+        // TODO: switch this to only load when loading the microbe stage to not load this in the future when we have
+        // playable stages that don't need these graphics
+        if (!string.IsNullOrEmpty(graphics.ScenePath))
+        {
+            loadedSceneData.LoadFrom(graphics);
+        }
 
-		if (!string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
-		{
-			loadedCorpseScene.LoadFrom(corpseChunkGraphics);
-		}
-		else
-		{
-			// Use default values from the primary scene
-			loadedCorpseScene = loadedSceneData;
-		}
+        if (!string.IsNullOrEmpty(corpseChunkGraphics.ScenePath))
+        {
+            loadedCorpseScene.LoadFrom(corpseChunkGraphics);
+        }
+        else
+        {
+            // Use default values from the primary scene
+            loadedCorpseScene = loadedSceneData;
+        }
 
-		if (!string.IsNullOrEmpty(IconPath))
-		{
-			LoadedIcon = GD.Load<Texture2D>(IconPath);
-		}
+        if (!string.IsNullOrEmpty(IconPath))
+        {
+            LoadedIcon = GD.Load<Texture2D>(IconPath);
+        }
 
-		// Resolve process names
-		if (Processes != null)
-		{
-			foreach (var process in Processes)
-			{
-				var resolvedProcess = new TweakedProcess(parameters.GetBioProcess(process.Key),
-					process.Value);
+        // Resolve process names
+        if (Processes != null)
+        {
+            foreach (var process in Processes)
+            {
+                var resolvedProcess = new TweakedProcess(parameters.GetBioProcess(process.Key),
+                    process.Value);
 
-				if (process.Value <= 0)
-				{
-					throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
-						"Process speed value should be above 0");
-				}
+                if (process.Value <= 0)
+                {
+                    throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
+                        "Process speed value should be above 0");
+                }
 
-				if (resolvedProcess.Process.IsMetabolismProcess && ProcessUsesOxygen(resolvedProcess))
-					IsOxygenMetabolism = true;
+                if (resolvedProcess.Process.IsMetabolismProcess && ProcessUsesOxygen(resolvedProcess))
+                    IsOxygenMetabolism = true;
 
-				RunnableProcesses.Add(resolvedProcess);
-			}
-		}
+                RunnableProcesses.Add(resolvedProcess);
+            }
+        }
 
-		// Resolve enzymes from strings to Enzyme objects
-		if (RawEnzymes != null)
-		{
-			foreach (var entry in RawEnzymes)
-			{
-				var enzyme = parameters.GetEnzyme(entry.Key);
+        // Resolve enzymes from strings to Enzyme objects
+        if (RawEnzymes != null)
+        {
+            foreach (var entry in RawEnzymes)
+            {
+                var enzyme = parameters.GetEnzyme(entry.Key);
 
-				Enzymes[enzyme] = entry.Value;
+                Enzymes[enzyme] = entry.Value;
 
-				if (entry.Value <= 0)
-				{
-					throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
-						"Enzyme amount value should be above 0");
-				}
-			}
-		}
+                if (entry.Value <= 0)
+                {
+                    throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
+                        "Enzyme amount value should be above 0");
+                }
+            }
+        }
 
-		// Resolve unlock conditions
-		if (UnlockConditions != null)
-		{
-			foreach (var set in UnlockConditions)
-				set.Resolve(parameters);
-		}
+        // Resolve unlock conditions
+        if (UnlockConditions != null)
+        {
+            foreach (var set in UnlockConditions)
+                set.Resolve(parameters);
+        }
 
-		// Resolve endosymbiosis data
-		if (!string.IsNullOrEmpty(endosymbiosisUnlocks))
-		{
-			EndosymbiosisUnlocks = parameters.GetOrganelleType(endosymbiosisUnlocks);
-		}
+        // Resolve endosymbiosis data
+        if (!string.IsNullOrEmpty(endosymbiosisUnlocks))
+        {
+            EndosymbiosisUnlocks = parameters.GetOrganelleType(endosymbiosisUnlocks);
+        }
 
-		if (Unimplemented)
-			return;
+        if (Unimplemented)
+            return;
 
-		// Compute total cost from the initial composition
-		OrganelleCost = 0;
+        // Compute total cost from the initial composition
+        OrganelleCost = 0;
 
-		foreach (var entry in InitialComposition)
-		{
-			OrganelleCost += entry.Value;
-		}
+        foreach (var entry in InitialComposition)
+        {
+            OrganelleCost += entry.Value;
+        }
 
-		// Precompute rotations
-		for (int i = 0; i < 6; ++i)
-		{
-			GetRotatedHexes(i);
-		}
+        // Precompute rotations
+        for (int i = 0; i < 6; ++i)
+        {
+            GetRotatedHexes(i);
+        }
 
-		ComputeFactoryCache();
+        ComputeFactoryCache();
 
-		foreach (var availableUpgrade in AvailableUpgrades.Values)
-		{
-			availableUpgrade.Resolve(parameters);
+        foreach (var availableUpgrade in AvailableUpgrades.Values)
+        {
+            availableUpgrade.Resolve(parameters);
 
-			if (availableUpgrade.OverrideProcesses != null)
-			{
-				hasProcessAffectingUpgrades = true;
+            if (availableUpgrade.OverrideProcesses != null)
+            {
+                hasProcessAffectingUpgrades = true;
 
-				if (availableUpgrade.IsDefault)
-				{
-					throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
-						"Default upgrade shouldn't override processes");
-				}
-			}
-		}
+                if (availableUpgrade.IsDefault)
+                {
+                    throw new InvalidRegistryDataException(InternalName, nameof(OrganelleDefinition),
+                        "Default upgrade shouldn't override processes");
+                }
+            }
+        }
 
-		ComputeTolerances();
-	}
+        ComputeTolerances();
+    }
 
-	/// <summary>
-	///   A bbcode string containing all the unlock-conditions for this organelle.
-	/// </summary>
-	public void GenerateUnlockRequirementsText(LocalizedStringBuilder builder,
-		WorldAndPlayerDataSource worldAndPlayerArgs)
-	{
-		if (UnlockConditions != null)
-		{
-			bool first = true;
-			foreach (var unlockCondition in UnlockConditions)
-			{
-				if (!first)
-				{
-					builder.Append(" ");
-					builder.Append(new LocalizedString("OR_UNLOCK_CONDITION"));
-					builder.Append(" ");
-				}
+    /// <summary>
+    ///   A bbcode string containing all the unlock-conditions for this organelle.
+    /// </summary>
+    public void GenerateUnlockRequirementsText(LocalizedStringBuilder builder,
+        WorldAndPlayerDataSource worldAndPlayerArgs)
+    {
+        if (UnlockConditions != null)
+        {
+            bool first = true;
+            foreach (var unlockCondition in UnlockConditions)
+            {
+                if (!first)
+                {
+                    builder.Append(" ");
+                    builder.Append(new LocalizedString("OR_UNLOCK_CONDITION"));
+                    builder.Append(" ");
+                }
 
-				unlockCondition.GenerateTooltip(builder, worldAndPlayerArgs);
-				first = false;
-			}
-		}
-	}
+                unlockCondition.GenerateTooltip(builder, worldAndPlayerArgs);
+                first = false;
+            }
+        }
+    }
 
-	public override void ApplyTranslations()
-	{
-		TranslationHelper.ApplyTranslations(this);
+    public override void ApplyTranslations()
+    {
+        TranslationHelper.ApplyTranslations(this);
 
-		foreach (var availableUpgrade in AvailableUpgrades.Values)
-		{
-			availableUpgrade.ApplyTranslations();
-		}
-	}
+        foreach (var availableUpgrade in AvailableUpgrades.Values)
+        {
+            availableUpgrade.ApplyTranslations();
+        }
+    }
 
-	public override int GetHashCode()
-	{
-		return unchecked((int)PersistentStringHash.GetHash(InternalName));
-	}
+    public override int GetHashCode()
+    {
+        return unchecked((int)PersistentStringHash.GetHash(InternalName));
+    }
 
-	public ulong GetVisualHashCode()
-	{
-		return PersistentStringHash.GetHash(InternalName);
-	}
+    public ulong GetVisualHashCode()
+    {
+        return PersistentStringHash.GetHash(InternalName);
+    }
 
-	public override string ToString()
-	{
-		return Name + " Organelle";
-	}
+    public override string ToString()
+    {
+        return Name + " Organelle";
+    }
 
-	private void ComputeFactoryCache()
-	{
-		HasPilusComponent = HasFeatureTag(OrganelleFeatureTag.Pilus);
-		HasMovementComponent = HasComponentFactory<MovementComponentFactory>();
-		HasCiliaComponent = HasComponentFactory<CiliaComponentFactory>();
-		HasAgentVacuoleComponent = HasComponentFactory<AgentVacuoleComponentFactory>();
-		HasSlimeJetComponent = HasComponentFactory<SlimeJetComponentFactory>();
-		HasChemoreceptorComponent = HasComponentFactory<ChemoreceptorComponentFactory>();
-		HasLysosomeComponent = HasComponentFactory<LysosomeComponentFactory>();
+    private void ComputeFactoryCache()
+    {
+        HasPilusComponent = HasFeatureTag(OrganelleFeatureTag.Pilus);
+        HasMovementComponent = HasComponentFactory<MovementComponentFactory>();
+        HasCiliaComponent = HasComponentFactory<CiliaComponentFactory>();
+        HasAgentVacuoleComponent = HasComponentFactory<AgentVacuoleComponentFactory>();
+        HasSlimeJetComponent = HasComponentFactory<SlimeJetComponentFactory>();
+        HasChemoreceptorComponent = HasComponentFactory<ChemoreceptorComponentFactory>();
+        HasLysosomeComponent = HasComponentFactory<LysosomeComponentFactory>();
 
-		HasBindingFeature = HasFeatureTag(OrganelleFeatureTag.BindingAgent);
-		HasSignalingFeature = HasFeatureTag(OrganelleFeatureTag.SignalingAgent);
-		HasRadiationProtection = HasFeatureTag(OrganelleFeatureTag.RadiationBlock);
-		HasHydrogenSulfideProtection = HasFeatureTag(OrganelleFeatureTag.HydrogenSulfideProtection);
-		HasHeatCollection = HasFeatureTag(OrganelleFeatureTag.HeatCollecting);
-	}
+        HasBindingFeature = HasFeatureTag(OrganelleFeatureTag.BindingAgent);
+        HasSignalingFeature = HasFeatureTag(OrganelleFeatureTag.SignalingAgent);
+        HasRadiationProtection = HasFeatureTag(OrganelleFeatureTag.RadiationBlock);
+        HasHydrogenSulfideProtection = HasFeatureTag(OrganelleFeatureTag.HydrogenSulfideProtection);
+        HasHeatCollection = HasFeatureTag(OrganelleFeatureTag.HeatCollecting);
+    }
 
-	private void CalculateModelOffset()
-	{
-		var temp = CalculateCenterOffset();
-		temp /= HexCount;
-		modelOffset = temp * Constants.DEFAULT_HEX_SIZE;
-	}
+    private void CalculateModelOffset()
+    {
+        var temp = CalculateCenterOffset();
+        temp /= HexCount;
+        modelOffset = temp * Constants.DEFAULT_HEX_SIZE;
+    }
 
-	private Vector3 CalculateCenterOffset()
-	{
-		var offset = new Vector3(0, 0, 0);
+    private Vector3 CalculateCenterOffset()
+    {
+        var offset = new Vector3(0, 0, 0);
 
-		foreach (var hex in Hexes)
-		{
-			offset += Hex.AxialToCartesian(hex);
-		}
+        foreach (var hex in Hexes)
+        {
+            offset += Hex.AxialToCartesian(hex);
+        }
 
-		offset /= Hexes.Count;
-		return offset;
-	}
+        offset /= Hexes.Count;
+        return offset;
+    }
 
-	private void ComputeTolerances()
-	{
-		ToleranceModifierOxygen = 0;
-		ToleranceModifierUV = 0;
-		ToleranceModifierPressureRange = 0;
-		ToleranceModifierTemperatureRange = 0;
+    private void ComputeTolerances()
+    {
+        ToleranceModifierOxygen = 0;
+        ToleranceModifierUV = 0;
+        ToleranceModifierPressureRange = 0;
+        ToleranceModifierTemperatureRange = 0;
 
-		foreach (var toleranceEffect in ToleranceEffects)
-		{
-			switch (toleranceEffect.Key)
-			{
-				case ToleranceModifier.Oxygen:
-					ToleranceModifierOxygen += toleranceEffect.Value;
-					break;
-				case ToleranceModifier.UV:
-					ToleranceModifierUV += toleranceEffect.Value;
-					break;
-				case ToleranceModifier.TemperatureRange:
-					ToleranceModifierTemperatureRange += toleranceEffect.Value;
-					break;
-				case ToleranceModifier.PressureRange:
-					ToleranceModifierPressureRange += toleranceEffect.Value;
-					break;
-				default:
-					GD.PrintErr("Unknown tolerance type for organelle to effect: ", toleranceEffect.Key);
-					break;
-			}
-		}
+        foreach (var toleranceEffect in ToleranceEffects)
+        {
+            switch (toleranceEffect.Key)
+            {
+                case ToleranceModifier.Oxygen:
+                    ToleranceModifierOxygen += toleranceEffect.Value;
+                    break;
+                case ToleranceModifier.UV:
+                    ToleranceModifierUV += toleranceEffect.Value;
+                    break;
+                case ToleranceModifier.TemperatureRange:
+                    ToleranceModifierTemperatureRange += toleranceEffect.Value;
+                    break;
+                case ToleranceModifier.PressureRange:
+                    ToleranceModifierPressureRange += toleranceEffect.Value;
+                    break;
+                default:
+                    GD.PrintErr("Unknown tolerance type for organelle to effect: ", toleranceEffect.Key);
+                    break;
+            }
+        }
 
-		AffectsTolerances = ToleranceModifierOxygen != 0 || ToleranceModifierUV != 0 ||
-			ToleranceModifierTemperatureRange != 0 || ToleranceModifierPressureRange != 0;
-	}
+        AffectsTolerances = ToleranceModifierOxygen != 0 || ToleranceModifierUV != 0 ||
+            ToleranceModifierTemperatureRange != 0 || ToleranceModifierPressureRange != 0;
+    }
 
-	private bool TryGetGraphicsForUpgrade(IReadOnlyOrganelleUpgrades? upgrades,
-		out LoadedSceneWithModelInfo upgradeScene)
-	{
-		if (upgrades == null)
-		{
-			upgradeScene = default(LoadedSceneWithModelInfo);
+    private bool TryGetGraphicsForUpgrade(IReadOnlyOrganelleUpgrades? upgrades,
+        out LoadedSceneWithModelInfo upgradeScene)
+    {
+        if (upgrades == null)
+        {
+            upgradeScene = default(LoadedSceneWithModelInfo);
 
-			return false;
-		}
+            return false;
+        }
 
-		foreach (var availableUpgrade in AvailableUpgrades)
-		{
-			if (upgrades.UnlockedFeatures.Contains(availableUpgrade.Key))
-			{
-				if (availableUpgrade.Value.TryGetGraphicsScene(out upgradeScene))
-				{
-					return true;
-				}
-			}
-		}
+        foreach (var availableUpgrade in AvailableUpgrades)
+        {
+            if (upgrades.UnlockedFeatures.Contains(availableUpgrade.Key))
+            {
+                if (availableUpgrade.Value.TryGetGraphicsScene(out upgradeScene))
+                {
+                    return true;
+                }
+            }
+        }
 
-		upgradeScene = default(LoadedSceneWithModelInfo);
+        upgradeScene = default(LoadedSceneWithModelInfo);
 
-		return false;
-	}
+        return false;
+    }
 
-	private bool ProcessUsesOxygen(TweakedProcess resolvedProcess)
-	{
-		foreach (var processInput in resolvedProcess.Process.Inputs)
-		{
-			if (processInput.Key.ID == Compound.Oxygen)
-				return true;
-		}
+    private bool ProcessUsesOxygen(TweakedProcess resolvedProcess)
+    {
+        foreach (var processInput in resolvedProcess.Process.Inputs)
+        {
+            if (processInput.Key.ID == Compound.Oxygen)
+                return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public class OrganelleComponentFactoryInfo
-	{
-		public StorageComponentFactory? Storage;
-		public AgentVacuoleComponentFactory? AgentVacuole;
-		public MovementComponentFactory? Movement;
-		public SlimeJetComponentFactory? SlimeJet;
-		public ChemoreceptorComponentFactory? Chemoreceptor;
-		public CiliaComponentFactory? Cilia;
-		public LysosomeComponentFactory? Lysosome;
-		public BioluminescenceComponentFactory? Bioluminescence;
+    public class OrganelleComponentFactoryInfo
+    {
+        public StorageComponentFactory? Storage;
+        public AgentVacuoleComponentFactory? AgentVacuole;
+        public MovementComponentFactory? Movement;
+        public SlimeJetComponentFactory? SlimeJet;
+        public ChemoreceptorComponentFactory? Chemoreceptor;
+        public CiliaComponentFactory? Cilia;
+        public LysosomeComponentFactory? Lysosome;
+        public BioluminescenceComponentFactory? Bioluminescence;
 
-		private readonly List<IOrganelleComponentFactory> allFactories = new();
+        private readonly List<IOrganelleComponentFactory> allFactories = new();
 
-		[JsonIgnore]
-		private int count = -1;
+        [JsonIgnore]
+        private int count = -1;
 
-		/// <summary>
-		///   The number of components
-		/// </summary>
-		public int Count => count;
+        /// <summary>
+        ///   The number of components
+        /// </summary>
+        public int Count => count;
 
-		public List<IOrganelleComponentFactory> Factories => allFactories;
+        public List<IOrganelleComponentFactory> Factories => allFactories;
 
-		/// <summary>
-		///   Checks and initializes the factory data
-		/// </summary>
-		public void Check(string name)
-		{
-			count = 0;
+        /// <summary>
+        ///   Checks and initializes the factory data
+        /// </summary>
+        public void Check(string name)
+        {
+            count = 0;
 
-			if (Storage != null)
-			{
-				Storage.Check(name);
-				allFactories.Add(Storage);
-				++count;
-			}
+            if (Storage != null)
+            {
+                Storage.Check(name);
+                allFactories.Add(Storage);
+                ++count;
+            }
 
-			if (AgentVacuole != null)
-			{
-				AgentVacuole.Check(name);
-				allFactories.Add(AgentVacuole);
-				++count;
-			}
+            if (AgentVacuole != null)
+            {
+                AgentVacuole.Check(name);
+                allFactories.Add(AgentVacuole);
+                ++count;
+            }
 
-			if (Movement != null)
-			{
-				Movement.Check(name);
-				allFactories.Add(Movement);
-				++count;
-			}
+            if (Movement != null)
+            {
+                Movement.Check(name);
+                allFactories.Add(Movement);
+                ++count;
+            }
 
-			if (SlimeJet != null)
-			{
-				SlimeJet.Check(name);
-				allFactories.Add(SlimeJet);
-				++count;
-			}
+            if (SlimeJet != null)
+            {
+                SlimeJet.Check(name);
+                allFactories.Add(SlimeJet);
+                ++count;
+            }
 
-			if (Chemoreceptor != null)
-			{
-				Chemoreceptor.Check(name);
-				allFactories.Add(Chemoreceptor);
-				++count;
-			}
+            if (Chemoreceptor != null)
+            {
+                Chemoreceptor.Check(name);
+                allFactories.Add(Chemoreceptor);
+                ++count;
+            }
 
-			if (Cilia != null)
-			{
-				Cilia.Check(name);
-				allFactories.Add(Cilia);
-				++count;
-			}
+            if (Cilia != null)
+            {
+                Cilia.Check(name);
+                allFactories.Add(Cilia);
+                ++count;
+            }
 
-			if (Lysosome != null)
-			{
-				Lysosome.Check(name);
-				allFactories.Add(Lysosome);
-				++count;
-			}
+            if (Lysosome != null)
+            {
+                Lysosome.Check(name);
+                allFactories.Add(Lysosome);
+                ++count;
+            }
 
-			if (Bioluminescence != null)
-			{
-				Bioluminescence.Check(name);
-				allFactories.Add(Bioluminescence);
-				++count;
-			}
-		}
-	}
+            if (Bioluminescence != null)
+            {
+                Bioluminescence.Check(name);
+                allFactories.Add(Bioluminescence);
+                ++count;
+            }
+        }
+    }
 }
