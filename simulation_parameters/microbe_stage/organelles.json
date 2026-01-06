@@ -365,6 +365,7 @@
     ],
     "UpgradeGUI": "res://src/microbe_stage/editor/upgrades/ChromatophoreUpgradeGUI.tscn",
     "UpgraderSkipDefaultControls": true,
+    "DefaultUpgradeName": "glucose",
     "AvailableUpgrades": {
       "nocalvin": {
         "Name": "CALVIN_NONE",
@@ -388,7 +389,7 @@
         "MPCost": 20,
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
         "OverrideProcesses": {
-          "glycolysis": 1,
+          "glycolysis": 1
         }
       }
     },

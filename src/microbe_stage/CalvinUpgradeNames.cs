@@ -14,31 +14,37 @@ public static class CalvinUpgradeNames
 
 	public const string STARCH_UPGRADE_NAME = "starch";
 
-	public static CalvinType GetCalvinTypeFromUpgrades(this IReadOnlyOrganelleUpgrades? upgrades)
+	public static CalvinType GetCalvinTypeFromUpgrades(this IReadOnlyOrganelleUpgrades? upgrades, string organelle)
 	{
 		if (upgrades == null || upgrades.UnlockedFeatures.Count < 1)
 			return CalvinType.NoCalvin;
 
 		foreach (var feature in upgrades.UnlockedFeatures)
 		{
-			if (TryGetCalvinTypeFromName(feature, out var type))
+			if (TryGetCalvinTypeFromName(feature, organelle, out var type))
 				return type;
 		}
 
 		return CalvinType.NoCalvin;
 	}
 
-	public static CalvinType CalvinTypeFromName(string name)
+	public static CalvinType CalvinTypeFromName(string name, string organelle)
 	{
-		if (TryGetCalvinTypeFromName(name, out var result))
+		if (TryGetCalvinTypeFromName(name, organelle, out var result))
 			return result;
 
 		throw new ArgumentException("Name doesn't match any calvin upgrade name, name was " + name);
 	}
 
-	public static bool TryGetCalvinTypeFromName(string name, out CalvinType type)
+	public static bool TryGetCalvinTypeFromName(string name, string organelle, out CalvinType type)
 	{
-		switch (name)
+		string name2 = name;
+		if (name2 == "none")
+		{
+			var toxinDefinition = SimulationParameters.Instance.GetOrganelleType(organelle);
+			name2 = toxinDefinition.DefaultUpgradeName;
+		}
+		switch (name2)
 		{
 			case GLUCOSE_UPGRADE_NAME:
 				type = CalvinType.Glucose;
@@ -50,7 +56,6 @@ public static class CalvinUpgradeNames
 				type = CalvinType.NoCalvin;
 				return true;
 		}
-
 		type = CalvinType.NoCalvin;
 		return false;
 	}

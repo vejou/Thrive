@@ -43,7 +43,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 		foreach (var availableUpgrade in toxinDefinition.AvailableUpgrades)
 		{
-			typeToUpgradeInfo[CalvinUpgradeNames.CalvinTypeFromName(availableUpgrade.Key)] = availableUpgrade.Value;
+			typeToUpgradeInfo[CalvinUpgradeNames.CalvinTypeFromName(availableUpgrade.Key, "chromatophore")] = availableUpgrade.Value;
 		}
 	}
 
@@ -77,7 +77,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 		if (organelle.Upgrades != null)
 		{
-			currentlySelectedType = organelle.Upgrades.GetCalvinTypeFromUpgrades();
+			currentlySelectedType = organelle.Upgrades.GetCalvinTypeFromUpgrades("chromatophore");
 
 			if (organelle.Upgrades.CustomUpgradeData is CalvinUpgrades toxinUpgrades)
 			{
@@ -116,7 +116,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 		foreach (var unlockedFeature in organelleUpgrades.UnlockedFeatures)
 		{
-			if (CalvinUpgradeNames.TryGetCalvinTypeFromName(unlockedFeature, out _))
+			if (CalvinUpgradeNames.TryGetCalvinTypeFromName(unlockedFeature, "chromatophore", out _))
 			{
 				featuresToClear.Add(unlockedFeature);
 			}
