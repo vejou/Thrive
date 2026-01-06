@@ -33,7 +33,7 @@ public static class CalvinUpgradeNames
 		if (TryGetCalvinTypeFromName(name, organelle, out var result))
 			return result;
 
-		throw new ArgumentException("Name doesn't match any calvin upgrade name, name was " + name);
+		throw new ArgumentException("Name doesn't match any calvin upgrade name, name was " + name + " and organelle was " + organelle);
 	}
 
 	public static bool TryGetCalvinTypeFromName(string name, string organelle, out CalvinType type)
