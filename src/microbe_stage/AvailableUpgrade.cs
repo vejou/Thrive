@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Godot;
 using Newtonsoft.Json;
 using ThriveScriptsShared;
@@ -97,7 +97,8 @@ public class AvailableUpgrade : IRegistryType
             foreach (var process in overrideProcesses)
             {
                 if (process.Value < 0)
-                    throw new InvalidRegistryDataException(name, GetType().Name, "Process speed should not be negative");
+                    throw new InvalidRegistryDataException(name, GetType().Name,
+                        "Process speed should not be negative");
             }
         }
 
