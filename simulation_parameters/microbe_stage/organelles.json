@@ -381,7 +381,7 @@
         "Name": "CALVIN_GLUCOSE",
         "Description": "CALVIN_GLUCOSE_DESCRIPTION",
         "MPCost": 10,
-        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
+        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png"
       },
       "starch": {
         "Name": "CALVIN_STARCH",

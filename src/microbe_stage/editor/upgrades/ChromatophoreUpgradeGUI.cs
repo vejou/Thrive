@@ -16,7 +16,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
     private OptionButton calvinTypeSelection = null!;
 
     [Export]
-    private Label chromatophoreTypeDescription = null!;
+    private Label typeDescription = null!;
 
     [Export]
     private CellStatsIndicator damageIndicator = null!;
@@ -43,7 +43,8 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
         foreach (var availableUpgrade in toxinDefinition.AvailableUpgrades)
         {
-            typeToUpgradeInfo[CalvinUpgradeNames.CalvinTypeFromName(availableUpgrade.Key, "chromatophore")] = availableUpgrade.Value;
+            var typeInput = CalvinUpgradeNames.CalvinTypeFromName(availableUpgrade.Key, "chromatophore");
+            typeToUpgradeInfo[typeInput] = availableUpgrade.Value;
         }
     }
 
@@ -150,7 +151,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
     {
         calvinTypeSelection.Select(calvinTypeSelection.GetItemIndex((int)calvinType));
 
-        chromatophoreTypeDescription.Text = Localization.Translate(calvinType.GetAttribute<DescriptionAttribute>().Description);
+        typeDescription.Text = Localization.Translate(calvinType.GetAttribute<DescriptionAttribute>().Description);
 
         UpdateStatIndicators(calvinType);
     }
