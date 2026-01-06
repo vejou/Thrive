@@ -362,7 +362,7 @@
         }
       }
     ],
-    "UpgradeGUI": "res://src/microbe_stage/editor/upgrades/ThylakoidUpgradeGUI.tscn",
+    "UpgradeGUI": "res://src/microbe_stage/editor/upgrades/ChromatophoreUpgradeGUI.tscn",
     "UpgraderSkipDefaultControls": true,
     "AvailableUpgrades": {
       "none": {
@@ -373,7 +373,7 @@
       },
       "glucose": {
         "Name": "CALVIN_GLUCOSE",
-        "Description": "CALVIN_GLUCOSE_DSECRIPTION",
+        "Description": "CALVIN_GLUCOSE_DESCRIPTION",
         "MPCost": 10,
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
         "OverrideProcesses": {
@@ -388,26 +388,6 @@
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
         "OverrideProcesses": {
           "glycolysis": 1,
-        }
-      },
-      "channel": {
-        "Name": "TOXIN_CHANNEL_INHIBITOR",
-        "Description": "TOXIN_CHANNEL_INHIBITOR_DESCRIPTION",
-        "MPCost": 25,
-        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
-        "OverrideProcesses": {
-          "glycolysis": 1,
-          "bacterial_channelInhibitorSynthesis": 1
-        }
-      },
-      "oxygen_inhibitor": {
-        "Name": "TOXIN_OXYGEN_METABOLISM_INHIBITOR",
-        "Description": "TOXIN_OXYGEN_METABOLISM_INHIBITOR_DESCRIPTION",
-        "MPCost": 20,
-        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
-        "OverrideProcesses": {
-          "glycolysis": 1,
-          "bacterial_oxygenInhibitorSynthesis": 1
         }
       }
     },

@@ -1,0 +1,72 @@
+﻿using System;
+
+/// <summary>
+///   Names of upgrades for the various ATP processing methods ("Calvin" cycles)
+/// </summary>
+public static class CalvinUpgradeNames
+{
+    /// <summary>
+    ///   Technically this is "none" but internally upgrades don't save the "none" upgrade in the upgrades list.
+    /// </summary>
+    public const string NOCALVIN_UPGRADE_NAME = Constants.ORGANELLE_UPGRADE_SPECIAL_NONE;
+
+    public const string GLUCOSE_UPGRADE_NAME = "glucose";
+
+    public const string STARCH_UPGRADE_NAME = "starch";
+
+    public static CalvinType GetCalvinTypeFromUpgrades(this IReadOnlyOrganelleUpgrades? upgrades)
+    {
+        if (upgrades == null || upgrades.UnlockedFeatures.Count < 1)
+            return CalvinType.NoCalvin;
+
+        foreach (var feature in upgrades.UnlockedFeatures)
+        {
+            if (TryGetCalvinTypeFromName(feature, out var type))
+                return type;
+        }
+
+        return CalvinType.NoCalvin;
+    }
+
+    public static CalvinType CalvinTypeFromName(string name)
+    {
+        if (TryGetCalvinTypeFromName(name, out var result))
+            return result;
+
+        throw new ArgumentException("Name doesn't match any calvin upgrade name");
+    }
+
+    public static bool TryGetCalvinTypeFromName(string name, out CalvinType type)
+    {
+        switch (name)
+        {
+            case GLUCOSE_UPGRADE_NAME:
+                type = CalvinType.Glucose;
+                return true;
+            case STARCH_UPGRADE_NAME:
+                type = CalvinType.Starch;
+                return true;
+            case NOCALVIN_UPGRADE_NAME:
+                type = CalvinType.NoCalvin;
+                return true;
+        }
+
+        type = CalvinType.NoCalvin;
+        return false;
+    }
+
+    public static string CalvinNameFromType(CalvinType calvinType)
+    {
+        switch (calvinType)
+        {
+            case CalvinType.Glucose:
+                return GLUCOSE_UPGRADE_NAME;
+            case CalvinType.NoCalvin:
+                return NOCALVIN_UPGRADE_NAME;
+            case CalvinType.Starch:
+                return STARCH_UPGRADE_NAME;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(calvinType), calvinType, null);
+        }
+    }
+}
