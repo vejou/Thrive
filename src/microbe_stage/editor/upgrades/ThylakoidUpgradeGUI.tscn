@@ -5,7 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://brgbuduvjby6a" path="res://src/gui_common/fonts/Title-SemiBold-Smaller.tres" id="2_ysgr0"]
 [ext_resource type="PackedScene" uid="uid://c027xyogk08vx" path="res://src/microbe_stage/editor/CellStatsIndicator.tscn" id="4_dj6ma"]
 
-[node name="ToxinUpgradeGUI" type="VBoxContainer" node_paths=PackedStringArray("toxinTypeSelection", "toxinTypeDescription", "damageIndicator", "damagePerOxygenIndicator", "baseMovementIndicator", "atpIndicator", "toxicitySlider")]
+[node name="ChromatophoreUpgradeGUI" type="VBoxContainer" node_paths=PackedStringArray("toxinTypeSelection", "toxinTypeDescription", "damageIndicator", "damagePerOxygenIndicator", "baseMovementIndicator", "atpIndicator", "toxicitySlider")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,8 +14,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_cq84u")
 script = ExtResource("2_w0q76")
-toxinTypeSelection = NodePath("ToxinType")
-toxinTypeDescription = NodePath("TypeExplanation")
+chromatophoreTypeSelection = NodePath("ChromatophoreType")
+chromatophoreDescription = NodePath("TypeExplanation")
 damageIndicator = NodePath("StatsContainer/Damage")
 damagePerOxygenIndicator = NodePath("StatsContainer/DamagPerOxygen")
 baseMovementIndicator = NodePath("StatsContainer/BaseMovementReduction")
@@ -33,7 +33,7 @@ autowrap_mode = 3
 layout_mode = 2
 text = "TOXIN_TYPE_COLON"
 
-[node name="ToxinType" type="OptionButton" parent="."]
+[node name="ChromatophoreType" type="OptionButton" parent="."]
 layout_mode = 2
 
 [node name="TypeExplanation" type="Label" parent="."]
