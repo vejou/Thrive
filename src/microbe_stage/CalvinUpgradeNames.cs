@@ -41,8 +41,16 @@ public static class CalvinUpgradeNames
         string name2 = name;
         if (name2 == "none")
         {
-            var toxinDefinition = SimulationParameters.Instance.GetOrganelleType(organelle);
-            name2 = toxinDefinition.DefaultUpgradeName;
+            var? toxinDefinition = SimulationParameters.Instance.GetOrganelleType(organelle);
+            if (toxinDefinition != null)
+            {
+                name2 = toxinDefinition.DefaultUpgradeName;
+            }
+            else
+            {
+                name2 = "chromatophore";
+                print("Organelle not found, assumed thylakoids.");
+            }
         }
         switch (name2)
         {

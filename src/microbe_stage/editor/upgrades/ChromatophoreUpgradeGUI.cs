@@ -170,13 +170,13 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
     private void UpdateCalvinStats(CalvinType calvinType)
     {
         var damageMultiplier =
-            1;//MicrobeEmissionSystem.CalvinAmountMultiplierFromToxicity((float)toxicitySlider.Value, calvinType);
+            1;
 
         switch (calvinType)
         {
             case CalvinType.Glucose:
             {
-                damageIndicator.Value = 1;//(float)Math.Round(Constants.OXYTOXY_DAMAGE * damageMultiplier, 1);
+                damageIndicator.Value = 1;
                 damagePerOxygenIndicator.Visible = true;
                 damagePerOxygenIndicator.Value = -100 * Constants.OXYTOXY_DAMAGE_DEBUFF_PER_ORGANELLE;
                 baseMovementIndicator.Value = 0;
@@ -186,7 +186,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
             case CalvinType.NoCalvin:
             {
-                damageIndicator.Value = 1;//(float)Math.Round(Constants.NOCALVIN_DAMAGE * damageMultiplier, 1);
+                damageIndicator.Value = 1;
                 damagePerOxygenIndicator.Value = 0;
                 baseMovementIndicator.Value = 0;
                 atpIndicator.Value = 0;
@@ -199,7 +199,6 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
                 damagePerOxygenIndicator.Value = 0;
                 baseMovementIndicator.Visible = true;
                 baseMovementIndicator.Value = 1;
-                    //(float)Math.Round(100 * Constants.MACROLIDE_BASE_MOVEMENT_DEBUFF * damageMultiplier);
                 atpIndicator.Value = 0;
                 break;
             }
