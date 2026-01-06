@@ -21,6 +21,16 @@
     },
     "IsMetabolismProcess": true
   },
+  "glucose_synthesis": {
+    "Name": "GLUCOSE_SYNTHESIS",
+    "Inputs": {
+      "atp": 1
+    },
+    "Outputs": {
+      "glucose": 0.002
+    },
+    "IsMetabolismProcess": true
+  },
   "glycolysis_cytoplasm": {
     "Name": "CYTOPLASM_GLYCOLYSIS",
     "Inputs": {
