@@ -97,7 +97,7 @@ public class AvailableUpgrade : IRegistryType
             foreach (var process in overrideProcesses)
             {
                 if (process.Value < 0)
-                    throw new InvalidRegistryDataException(name, GetType().Name, "Process speed should be positive or zero");
+                    throw new InvalidRegistryDataException(name, GetType().Name, "Process speed should not be negative");
             }
         }
 

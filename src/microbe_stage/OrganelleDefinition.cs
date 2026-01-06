@@ -181,7 +181,7 @@ public class OrganelleDefinition : RegistryType
     public Dictionary<string, AvailableUpgrade> AvailableUpgrades = new();
 
     /// <summary>
-    ///  The name of the default ("none") upgrade, if needed
+    ///   The name of the default ("none") upgrade, if needed
     /// </summary>
     public string? DefaultUpgradeName;
 
