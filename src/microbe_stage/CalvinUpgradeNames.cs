@@ -1,4 +1,5 @@
 using System;
+using Godot;
 
 /// <summary>
 ///   Names of upgrades for the various ATP processing methods ("Calvin" cycles)
@@ -41,15 +42,15 @@ public static class CalvinUpgradeNames
         string name2 = name;
         if (name2 == "none")
         {
-            var? toxinDefinition = SimulationParameters.Instance.GetOrganelleType(organelle);
-            if (toxinDefinition != null)
+            OrganelleDefinition? Definition = SimulationParameters.Instance.GetOrganelleType(organelle);
+            if (Definition != null)
             {
-                name2 = toxinDefinition.DefaultUpgradeName;
+                name2 = Definition.DefaultUpgradeName;
             }
             else
             {
                 name2 = "chromatophore";
-                print("Organelle not found, assumed thylakoids.");
+                GD.Print("Organelle for Calvin cycling not found, assumed thylakoids.");
             }
         }
         switch (name2)
