@@ -9,11 +9,11 @@ using Systems;
 /// </summary>
 public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 {
-	private readonly Dictionary<ToxinType, AvailableUpgrade> typeToUpgradeInfo = new();
+	private readonly Dictionary<CalvinType, AvailableUpgrade> typeToUpgradeInfo = new();
 
 #pragma warning disable CA2213
 	[Export]
-	private OptionButton toxinTypeSelection = null!;
+	private OptionButton calvinTypeSelection = null!;
 
 	[Export]
 	private Label chromatophoreTypeDescription = null!;
@@ -35,7 +35,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 #pragma warning restore CA2213
 
-	private ToxinType latestToxinType;
+	private CalvinType latestCalvinType;
 
 	public ChromatophoreUpgradeGUI()
 	{
@@ -43,7 +43,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 		foreach (var availableUpgrade in toxinDefinition.AvailableUpgrades)
 		{
-			typeToUpgradeInfo[ToxinUpgradeNames.ToxinTypeFromName(availableUpgrade.Key)] = availableUpgrade.Value;
+			typeToUpgradeInfo[CalvinUpgradeNames.CalvinTypeFromName(availableUpgrade.Key)] = availableUpgrade.Value;
 		}
 	}
 
@@ -59,27 +59,27 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 	public void OnStartFor(OrganelleTemplate organelle, GameProperties currentGame, float costMultiplier)
 	{
-		toxinTypeSelection.Clear();
+		calvinTypeSelection.Clear();
 
 		var upgradeTranslationTemplate = Localization.Translate("UPGRADE_COST");
 
-		foreach (var toxinType in Enum.GetValues<ToxinType>())
+		foreach (var calvinType in Enum.GetValues<CalvinType>())
 		{
-			var info = typeToUpgradeInfo[toxinType];
+			var info = typeToUpgradeInfo[calvinType];
 
-			toxinTypeSelection.AddItem(upgradeTranslationTemplate.FormatSafe(Localization.Translate(info.Name),
-				Math.Round(info.MPCost * costMultiplier)), (int)toxinType);
+			calvinTypeSelection.AddItem(upgradeTranslationTemplate.FormatSafe(Localization.Translate(info.Name),
+				Math.Round(info.MPCost * costMultiplier)), (int)calvinType);
 		}
 
-		var currentlySelectedType = ToxinType.Cytotoxin;
+		var currentlySelectedType = CalvinType.NoCalvin;
 
 		toxicitySlider.Value = Constants.DEFAULT_TOXICITY;
 
 		if (organelle.Upgrades != null)
 		{
-			currentlySelectedType = organelle.Upgrades.GetToxinTypeFromUpgrades();
+			currentlySelectedType = organelle.Upgrades.GetCalvinTypeFromUpgrades();
 
-			if (organelle.Upgrades.CustomUpgradeData is ToxinUpgrades toxinUpgrades)
+			if (organelle.Upgrades.CustomUpgradeData is CalvinUpgrades toxinUpgrades)
 			{
 				if (currentlySelectedType != toxinUpgrades.BaseType)
 				{
@@ -95,13 +95,13 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 	public bool ApplyChanges(ICellEditorComponent editorComponent, OrganelleUpgrades organelleUpgrades)
 	{
-		if (toxinTypeSelection.ItemCount < 1)
+		if (calvinTypeSelection.ItemCount < 1)
 		{
 			GD.PrintErr("Toxin upgrade GUI not opened properly");
 			return false;
 		}
 
-		int selectedIndex = toxinTypeSelection.Selected;
+		int selectedIndex = calvinTypeSelection.Selected;
 
 		if (selectedIndex < 0)
 		{
@@ -116,7 +116,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 
 		foreach (var unlockedFeature in organelleUpgrades.UnlockedFeatures)
 		{
-			if (ToxinUpgradeNames.TryGetToxinTypeFromName(unlockedFeature, out _))
+			if (CalvinUpgradeNames.TryGetCalvinTypeFromName(unlockedFeature, out _))
 			{
 				featuresToClear.Add(unlockedFeature);
 			}
@@ -128,15 +128,15 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 		}
 
 		// Apply new data
-		var selectedType = (ToxinType)toxinTypeSelection.GetItemId(selectedIndex);
+		var selectedType = (CalvinType)calvinTypeSelection.GetItemId(selectedIndex);
 
-		var upgradeName = ToxinUpgradeNames.ToxinNameFromType(selectedType);
+		var upgradeName = CalvinUpgradeNames.CalvinNameFromType(selectedType);
 
 		// Default upgrade name is skipped
 		if (upgradeName != Constants.ORGANELLE_UPGRADE_SPECIAL_NONE)
 			organelleUpgrades.ModifiableUnlockedFeatures.Add(upgradeName);
 
-		organelleUpgrades.CustomUpgradeData = new ToxinUpgrades(selectedType, (float)toxicitySlider.Value);
+		organelleUpgrades.CustomUpgradeData = new CalvinUpgrades(selectedType, (float)toxicitySlider.Value);
 
 		return true;
 	}
@@ -146,37 +146,37 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 		return new Vector2(350, 380);
 	}
 
-	private void ApplySelection(ToxinType toxinType)
+	private void ApplySelection(CalvinType calvinType)
 	{
-		toxinTypeSelection.Select(toxinTypeSelection.GetItemIndex((int)toxinType));
+		calvinTypeSelection.Select(calvinTypeSelection.GetItemIndex((int)calvinType));
 
-		chromatophoreTypeDescription.Text = Localization.Translate(toxinType.GetAttribute<DescriptionAttribute>().Description);
+		chromatophoreTypeDescription.Text = Localization.Translate(calvinType.GetAttribute<DescriptionAttribute>().Description);
 
-		UpdateStatIndicators(toxinType);
+		UpdateStatIndicators(calvinType);
 	}
 
-	private void UpdateStatIndicators(ToxinType toxinType)
+	private void UpdateStatIndicators(CalvinType calvinType)
 	{
 		damageIndicator.Visible = true;
 		damagePerOxygenIndicator.Visible = false;
 		baseMovementIndicator.Visible = false;
 		atpIndicator.Visible = false;
 
-		latestToxinType = toxinType;
+		latestCalvinType = calvinType;
 
-		UpdateToxinStats(toxinType);
+		UpdateCalvinStats(calvinType);
 	}
 
-	private void UpdateToxinStats(ToxinType toxinType)
+	private void UpdateCalvinStats(CalvinType calvinType)
 	{
 		var damageMultiplier =
-			MicrobeEmissionSystem.ToxinAmountMultiplierFromToxicity((float)toxicitySlider.Value, toxinType);
+			1;//MicrobeEmissionSystem.CalvinAmountMultiplierFromToxicity((float)toxicitySlider.Value, calvinType);
 
-		switch (toxinType)
+		switch (calvinType)
 		{
-			case ToxinType.Oxytoxy:
+			case CalvinType.Glucose:
 			{
-				damageIndicator.Value = (float)Math.Round(Constants.OXYTOXY_DAMAGE * damageMultiplier, 1);
+				damageIndicator.Value = 1;//(float)Math.Round(Constants.OXYTOXY_DAMAGE * damageMultiplier, 1);
 				damagePerOxygenIndicator.Visible = true;
 				damagePerOxygenIndicator.Value = -100 * Constants.OXYTOXY_DAMAGE_DEBUFF_PER_ORGANELLE;
 				baseMovementIndicator.Value = 0;
@@ -184,54 +184,34 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 				break;
 			}
 
-			case ToxinType.Cytotoxin:
+			case CalvinType.NoCalvin:
 			{
-				damageIndicator.Value = (float)Math.Round(Constants.CYTOTOXIN_DAMAGE * damageMultiplier, 1);
+				damageIndicator.Value = 1;//(float)Math.Round(Constants.NOCALVIN_DAMAGE * damageMultiplier, 1);
 				damagePerOxygenIndicator.Value = 0;
 				baseMovementIndicator.Value = 0;
 				atpIndicator.Value = 0;
 				break;
 			}
 
-			case ToxinType.Macrolide:
+			case CalvinType.Starch:
 			{
 				damageIndicator.Value = 0;
 				damagePerOxygenIndicator.Value = 0;
 				baseMovementIndicator.Visible = true;
-				baseMovementIndicator.Value =
-					(float)Math.Round(100 * Constants.MACROLIDE_BASE_MOVEMENT_DEBUFF * damageMultiplier);
-				atpIndicator.Value = 0;
-				break;
-			}
-
-			case ToxinType.ChannelInhibitor:
-			{
-				damageIndicator.Value = 0;
-				damagePerOxygenIndicator.Value = 0;
-				baseMovementIndicator.Value = 0;
-				atpIndicator.Visible = true;
-				atpIndicator.Value = (float)Math.Round(100 * Constants.CHANNEL_INHIBITOR_ATP_DEBUFF * damageMultiplier);
-				break;
-			}
-
-			case ToxinType.OxygenMetabolismInhibitor:
-			{
-				damageIndicator.Value = (float)Math.Round(Constants.OXYGEN_INHIBITOR_DAMAGE * damageMultiplier, 1);
-				damagePerOxygenIndicator.Visible = true;
-				damagePerOxygenIndicator.Value = 100 * Constants.OXYGEN_INHIBITOR_DAMAGE_BUFF_PER_ORGANELLE;
-				baseMovementIndicator.Value = 0;
+				baseMovementIndicator.Value = 1;
+					//(float)Math.Round(100 * Constants.MACROLIDE_BASE_MOVEMENT_DEBUFF * damageMultiplier);
 				atpIndicator.Value = 0;
 				break;
 			}
 
 			default:
-				throw new ArgumentOutOfRangeException(nameof(toxinType), toxinType, null);
+				throw new ArgumentOutOfRangeException(nameof(calvinType), calvinType, null);
 		}
 	}
 
-	private void OnToxinTypeSelected(int index)
+	private void OnCalvinTypeSelected(int index)
 	{
-		ApplySelection((ToxinType)toxinTypeSelection.GetItemId(index));
+		ApplySelection((CalvinType)calvinTypeSelection.GetItemId(index));
 	}
 
 	private void OnToxicityChanged(float value)
@@ -239,6 +219,6 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
 		_ = value;
 
 		// Update stats as the toxicity affects these
-		UpdateToxinStats(latestToxinType);
+		UpdateCalvinStats(latestCalvinType);
 	}
 }
