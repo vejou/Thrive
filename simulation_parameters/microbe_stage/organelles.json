@@ -333,7 +333,8 @@
     ],
     "Processes": {
       "glycolysis": 1,
-      "chromatophore_photosynthesis": 1
+      "chromatophore_photosynthesis": 1,
+      "glucose_synthesis": 1
     },
     "Components": {
       "Storage": {
@@ -365,21 +366,21 @@
     "UpgradeGUI": "res://src/microbe_stage/editor/upgrades/ChromatophoreUpgradeGUI.tscn",
     "UpgraderSkipDefaultControls": true,
     "AvailableUpgrades": {
-      "none": {
-        "IsDefault": true,
+      "nocalvin": {
         "Name": "CALVIN_NONE",
         "Description": "CALVIN_NONE_DESCRIPTION",
-        "MPCost": 10
+        "MPCost": 10,
+        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
+        "OverrideProcesses": {
+          "glucose_synthesis": 0
+        }
       },
-      "glucose": {
+      "none": {
+        "IsDefault": true,
         "Name": "CALVIN_GLUCOSE",
         "Description": "CALVIN_GLUCOSE_DESCRIPTION",
         "MPCost": 10,
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
-        "OverrideProcesses": {
-          "glycolysis": 1,
-          "glucose_synthesis": 1
-        }
       },
       "starch": {
         "Name": "CALVIN_STARCH",
