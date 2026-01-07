@@ -230,8 +230,19 @@
     },
     "IsMetabolismProcess": true
   },
-  "chromatophore_photosynthesis": {
-    "Name": "PHOTOSYNTHESIS",
+  "chromatophore_ATP_synthesis": {
+    "Name": "PHOTOSYNTHESIS (ATP)",
+    "Inputs": {
+      "sunlight": 1,
+      "carbondioxide": 0.081
+    },
+    "Outputs": {
+      "atp": 7.5,
+      "oxygen": 0.081
+    }
+  },
+  "chromatophore_glucogenesis": {
+    "Name": "PHOTOSYNTHESIS (GLUCOSE)",
     "Inputs": {
       "sunlight": 1,
       "carbondioxide": 0.081

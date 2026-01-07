@@ -333,8 +333,7 @@
     ],
     "Processes": {
       "glycolysis": 1,
-      "chromatophore_photosynthesis": 1,
-      "glucose_synthesis": 1
+      "chromatophore_glucogenesis": 1,
     },
     "Components": {
       "Storage": {
@@ -373,7 +372,8 @@
         "MPCost": 10,
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
         "OverrideProcesses": {
-          "glucose_synthesis": 0
+          "chromatophore_glucogenesis": 0,
+          "chromatophore_ATP_synthesis": 1
         }
       },
       "none": {
