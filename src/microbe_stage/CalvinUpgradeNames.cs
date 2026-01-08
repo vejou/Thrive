@@ -43,10 +43,10 @@ public static class CalvinUpgradeNames
         string name2 = name;
         if (name2 == "none")
         {
-            OrganelleDefinition? Definition = SimulationParameters.Instance.GetOrganelleType(organelle);
-            if (Definition != null)
+            OrganelleDefinition? definition = SimulationParameters.Instance.GetOrganelleType(organelle);
+            if (definition.DefaultUpgradeName != null)
             {
-                name2 = Definition.DefaultUpgradeName;
+                name2 = definition.DefaultUpgradeName;
             }
             else
             {
@@ -54,34 +54,49 @@ public static class CalvinUpgradeNames
                 GD.Print("Organelle for Calvin cycling not found, assumed thylakoids.");
             }
         }
+
         switch (name2)
         {
             case GLUCOSE_UPGRADE_NAME:
                 type = CalvinType.Glucose;
                 return true;
             case STARCH_UPGRADE_NAME:
-                type = CalvinType.Starch;
+                // Starch not yet implemented (type = CalvinType.Starch;)
+                type = CalvinType.Glucose;
+                GD.Print("Starch calvin cycling not yet implemented, Glucose used instead.");
                 return true;
             case NOCALVIN_UPGRADE_NAME:
                 type = CalvinType.NoCalvin;
                 return true;
         }
+
         type = CalvinType.NoCalvin;
         return false;
     }
 
-    public static string CalvinNameFromType(CalvinType calvinType)
+    public static string CalvinNameFromType(CalvinType calvinType, string organelle)
     {
+        OrganelleDefinition definition = SimulationParameters.Instance.GetOrganelleType(organelle);
+        string placeholder;
         switch (calvinType)
         {
             case CalvinType.Glucose:
-                return GLUCOSE_UPGRADE_NAME;
+                placeholder = GLUCOSE_UPGRADE_NAME;
+                break;
             case CalvinType.NoCalvin:
-                return NOCALVIN_UPGRADE_NAME;
-            case CalvinType.Starch:
-                return STARCH_UPGRADE_NAME;
+                placeholder = NOCALVIN_UPGRADE_NAME;
+                break;
+
+            // Starch would go here as well, if implemented.
             default:
                 throw new ArgumentOutOfRangeException(nameof(calvinType), calvinType, null);
         }
+
+        if (placeholder == definition.DefaultUpgradeName)
+        {
+            return "none"; // we can't return 'glucose' for a chloroplast if a chloroplast's default upgrade is glucose
+        }
+
+        return placeholder;
     }
 }

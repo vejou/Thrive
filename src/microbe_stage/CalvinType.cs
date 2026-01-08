@@ -26,6 +26,12 @@ public enum CalvinType
     /// <summary>
     ///   Starch creation (not implemented)
     /// </summary>
+    
+    
+    // Starch not yet supported
+
+    /*
     [Description("TOXIN_MACROLIDE_DESCRIPTION")]
     Starch,
+    */
 }

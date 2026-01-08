@@ -84,7 +84,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
             {
                 if (currentlySelectedType != toxinUpgrades.BaseType)
                 {
-                    GD.PrintErr("Mismatch between custom toxin upgrade data and unlocked features list");
+                    // GD.PrintErr("Mismatch between custom toxin upgrade data and unlocked features list");
                 }
 
                 toxicitySlider.Value = toxinUpgrades.Toxicity;
@@ -131,7 +131,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
         // Apply new data
         var selectedType = (CalvinType)calvinTypeSelection.GetItemId(selectedIndex);
 
-        var upgradeName = CalvinUpgradeNames.CalvinNameFromType(selectedType);
+        var upgradeName = CalvinUpgradeNames.CalvinNameFromType(selectedType, "chromatophore");
 
         // Default upgrade name is skipped
         if (upgradeName != Constants.ORGANELLE_UPGRADE_SPECIAL_NONE)
@@ -190,16 +190,6 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
                 damageIndicator.Value = 1;
                 damagePerOxygenIndicator.Value = 0;
                 baseMovementIndicator.Value = 0;
-                atpIndicator.Value = 0;
-                break;
-            }
-
-            case CalvinType.Starch:
-            {
-                damageIndicator.Value = 0;
-                damagePerOxygenIndicator.Value = 0;
-                baseMovementIndicator.Visible = true;
-                baseMovementIndicator.Value = 1;
                 atpIndicator.Value = 0;
                 break;
             }

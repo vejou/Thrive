@@ -382,15 +382,6 @@
         "Description": "CALVIN_GLUCOSE_DESCRIPTION",
         "MPCost": 10,
         "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png"
-      },
-      "starch": {
-        "Name": "CALVIN_STARCH",
-        "Description": "Not yet implemented",
-        "MPCost": 20,
-        "IconPath": "res://assets/textures/gui/bevel/parts/OxytoxisomeIcon.png",
-        "OverrideProcesses": {
-          "glycolysis": 1
-        }
       }
     },
     "EditorButtonGroup": "Protein",
