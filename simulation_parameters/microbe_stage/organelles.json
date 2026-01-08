@@ -333,7 +333,7 @@
     ],
     "Processes": {
       "glycolysis": 1,
-      "chromatophore_glucogenesis": 1,
+      "chromatophore_glucogenesis": 1
     },
     "Components": {
       "Storage": {
