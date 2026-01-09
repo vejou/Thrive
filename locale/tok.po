@@ -929,6 +929,10 @@ msgstr ""
 msgid "COLLISION_SHAPE"
 msgstr ""
 
+#, fuzzy
+msgid "COLONY_GROWTH_ORDER_EXPLANATION"
+msgstr "(nanpa ni: sike ante li kama ante kepeken tenpo seme)"
+
 msgid "COLOUR"
 msgstr ""
 
@@ -8593,6 +8597,14 @@ msgstr ""
 
 msgid "WORST_PATCH_COLON"
 msgstr ""
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER"
+msgstr "(nanpa ni: sike ante li kama ante kepeken tenpo seme)"
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER_TEXT"
+msgstr "(nanpa ni: sike ante li kama ante kepeken tenpo seme)"
 
 msgid "XBOX360"
 msgstr ""
