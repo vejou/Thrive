@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-09 17:04-0500\n"
+"POT-Creation-Date: 2026-01-09 17:07-0500\n"
 "PO-Revision-Date: 2025-05-25 15:00+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch (Belgium) <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/nl_BE/>\n"
@@ -958,6 +958,10 @@ msgstr "Kust"
 
 msgid "COLLISION_SHAPE"
 msgstr ""
+
+#, fuzzy
+msgid "COLONY_GROWTH_ORDER_EXPLANATION"
+msgstr "{0} bevolking veranderd met {1} door: {2}"
 
 msgid "COLOUR"
 msgstr "Kleur"
@@ -9660,6 +9664,14 @@ msgstr "Temp."
 
 msgid "WORST_PATCH_COLON"
 msgstr "Slechtste Zone:"
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER"
+msgstr "BEVESTIGEN"
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER_TEXT"
+msgstr "BEVESTIGEN"
 
 msgid "XBOX360"
 msgstr "Xbox 360"

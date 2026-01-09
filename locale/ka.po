@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-09 17:04-0500\n"
+"POT-Creation-Date: 2026-01-09 17:07-0500\n"
 "PO-Revision-Date: 2025-12-06 19:09+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/ka/>\n"
@@ -899,6 +899,10 @@ msgstr "სანაპირო"
 
 msgid "COLLISION_SHAPE"
 msgstr "ფიზიკის გამართვის ფიგურების ჩვენება"
+
+#, fuzzy
+msgid "COLONY_GROWTH_ORDER_EXPLANATION"
+msgstr "(როცა ჩართულია, შეზღუდავს ზრდის სიჩქარეს. თუ გათიშულია, ზრდის სიჩქარეს, მხოლოდ, ხელმისაწვდომი ნაერთები ზღუდავენ)"
 
 msgid "COLOUR"
 msgstr "ფერი"
@@ -8173,6 +8177,14 @@ msgstr "თბილი"
 
 msgid "WORST_PATCH_COLON"
 msgstr "ყველაზე ცუდი ბიომა:"
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER"
+msgstr "ზრდის მიმდევრობა"
+
+#, fuzzy
+msgid "WRONG_GROWTH_ORDER_TEXT"
+msgstr "ზრდის მიმდევრობა"
 
 msgid "XBOX360"
 msgstr "Xbox 360"
