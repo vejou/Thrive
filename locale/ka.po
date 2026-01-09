@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-06 19:09+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/ka/>\n"
-"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ka\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.9.1\n"
@@ -625,6 +625,22 @@ msgstr "კალციუმის კარბონატი"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "ამ მემბრანას კალციუმის კარბონატისგან შემდგარი ძლიერი გარსი გააჩნია. მას საკმაოდ ადვილად შეუძლია, დაზიანება გადაიტანოს და ნაკლები ენერგია სჭირდება, რომ დეფორმაცია არ განიცადოს. ამნაირი მძიმე გარსის ქონის უარყოფით მხარე ისაა, რომ უჯრედი ძალიან ნელდება და რესურსებსაც უფრო ნელა შთანთქავს."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "გლუკოზის შექმნა"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "ცელულაზა უჯრედს ცელულოზისგან შემდგარი მემბრანების დაშლის საშუალებას აძლევს. თითოეული დამატება ეფექტურობას ზრდის."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "არცერთი"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "წამწამები შოლტის მსგავსი რამაა, მაგრამ გადაადგილებისთვის საჭირო გაწევის ძალის მაგიერ ისინი უჯრედებს მობრუნებაში ეხმარებიან."
 
 msgid "CAMERA"
 msgstr "კამერა"
@@ -2464,6 +2480,10 @@ msgstr "გლუკოზის კონცენტრაციები მ�
 
 msgid "GLUCOSE_LEVEL"
 msgstr "გლუკოზის დონე"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "ლუციფერაზის სინთეზი"
 
 msgid "GLYCOLYSIS"
 msgstr "გლიკოლიზი"
@@ -4598,6 +4618,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "ფოსფატების დონე"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "ფოტოსინთეზი"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "ფოტოსინთეზი"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "ფოტოსინთეზი"
 
 msgid "PHYSICAL_CONDITIONS"

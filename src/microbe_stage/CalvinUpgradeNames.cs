@@ -26,6 +26,7 @@ public static class CalvinUpgradeNames
                 return type;
         }
 
+        GD.Print("Calvin type not found.");
         return CalvinType.NoCalvin;
     }
 
@@ -71,6 +72,7 @@ public static class CalvinUpgradeNames
         }
 
         type = CalvinType.NoCalvin;
+        GD.Print("Calvin type not found.");
         return false;
     }
 

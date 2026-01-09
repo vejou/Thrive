@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-08 21:28+0000\n"
 "Last-Translator: Shigasaa <altitudes.etrangeres@ikmail.com>\n"
 "Language-Team: French <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/fr/>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.8.0\n"
@@ -632,6 +632,22 @@ msgstr "Carbonate de calcium"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Cette membrane a une coque résistante faite de carbonate de calcium. Elle peut facilement résister aux dégâts et requiert moins d'énergie pour ne pas se déformer. L'inconvénient d'avoir une coque si résistante est que la cellule est plus lente et va prendre du temps à absorber les ressources."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Créer du glucose"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "La cellulase décompose la membrane de cellulose des cellules. Chaque ajout augment l'efficacité."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Aucun"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Les cils sont similaires aux flagelles mais au lieu de fournir une force de poussée directionnelle, ils fournissent une force de rotation pour aider les cellules à tourner."
 
 msgid "CAMERA"
 msgstr "Caméra"
@@ -2653,6 +2669,10 @@ msgstr "La concentration de glucose a baissé drastiquement !"
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "Niveau de glucose"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Synthèse de luciférase"
 
 msgid "GLYCOLYSIS"
 msgstr "Glycolyse"
@@ -5002,6 +5022,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Phosphate"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Photosynthèse"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Photosynthèse"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Photosynthèse"
 
 msgid "PHYSICAL_CONDITIONS"

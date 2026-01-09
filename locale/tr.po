@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-18 17:38+0000\n"
 "Last-Translator: punctdan <yunusemredilek@hotmail.com>\n"
 "Language-Team: Turkish <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/tr/>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.8.0\n"
@@ -625,6 +625,22 @@ msgstr "Kalsiyum Karbonat"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Bu hücre zarı, kalsiyum karbonattan yapılmış güçlü bir kabuğa sahiptir. Hasara karşı kolayca direnir ve şeklinin bozulmaması için daha az enerji gerektirir. Böyle ağır bir kabuğa sahip olmanın dezavantajları ise hücrenin çok daha yavaş olması ve kaynakları emmenin biraz daha zaman almasıdır."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Glukoz oluştur"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "Selülaz, hücrenin selüloz hücre zarını parçalamasını sağlar. Her eklemede etkisi artar."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Yok"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Sil tüyleri kamçılara benzer ancak, yönlü itiş kuvveti sağlamak yerine, hücrelerin dönmesi için dönme kuvveti sağlar."
 
 msgid "CAMERA"
 msgstr "Kamera"
@@ -2579,6 +2595,10 @@ msgstr "Glukoz konsantrasyonu sert bir şekilde düştü!"
 
 msgid "GLUCOSE_LEVEL"
 msgstr "Glukoz seviyesi"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Lusiferaz Sentezi"
 
 msgid "GLYCOLYSIS"
 msgstr "Glikoliz"
@@ -4813,6 +4833,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Fosfat seviyesi"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Fotosentez"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Fotosentez"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Fotosentez"
 
 msgid "PHYSICAL_CONDITIONS"

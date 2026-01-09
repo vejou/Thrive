@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-11-10 22:19+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/nl/>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.9.0\n"
@@ -641,6 +641,22 @@ msgstr "Calciumcarbonaat"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Dit membraan heeft een sterke schelp gemaakt van calcium carbonaat. Het raakt niet snel beschadigd en heeft weinig energie nodig om niet te vervormen. Het nadeel van zulks een zware schelp is dat de cel veel trager is en niet snel grondstoffen kan absorberen."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Plaats glucose"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "Cellulase maakt het mogelijk voor een cel om membranen van cellulose af te breken. Elke toevoeging verhoogt de effectiviteit."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Geen"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Trilhaartjes lijken op flagellen maar in plaats van stuwkracht in een bepaalde richting zorgen ze voor rotatiekracht waardoor de cel beter kan draaien."
 
 msgid "CAMERA"
 msgstr "Camera"
@@ -2634,6 +2650,10 @@ msgstr "Glucoseconcentratie is drastisch gedaald!"
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "{0}-{1}m onder zeeniveau"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Slijmsynthese"
 
 msgid "GLYCOLYSIS"
 msgstr "Glycolyse"
@@ -5049,6 +5069,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Fosfaat"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Fotosynthese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Fotosynthese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Fotosynthese"
 
 msgid "PHYSICAL_CONDITIONS"

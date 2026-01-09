@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-05 22:50+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/pt_BR/>\n"
-"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.8.0\n"
@@ -634,6 +634,22 @@ msgstr "Carbonato de Cálcio"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Essa membrana tem uma casca forte feita de carbonato de cálcio. Pode resistir a danos facilmente e requer menos energia para não deformar. As desvantagens de ter uma casca tão pesada é que a célula fica mais lenta e demora ainda mais para absorver recursos."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Gerar glicose"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "A celulase permite que sua célula quebre membranas de celulose. Cada adição aumenta sua eficácia."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Nenhum"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Os cílios são semelhantes aos flagelos, mas ao invés de fornecerem força de impulso direcional, eles fornecem força rotacional para ajudar as células a girar."
 
 msgid "CAMERA"
 msgstr "Câmera"
@@ -2616,6 +2632,10 @@ msgstr "As concentrações de glicose caíram drasticamente!"
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "{0}-{1}m sob o nível do mar"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Síntese de Luciferase"
 
 msgid "GLYCOLYSIS"
 msgstr "Glicólise"
@@ -4878,6 +4898,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Custo dos Fosfatos:"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Fotossíntese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Fotossíntese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Fotossíntese"
 
 msgid "PHYSICAL_CONDITIONS"

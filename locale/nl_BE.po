@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-05-25 15:00+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Dutch (Belgium) <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/nl_BE/>\n"
-"Language: nl_BE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_BE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.9.0\n"
@@ -661,6 +661,22 @@ msgstr "Calciumcarbonaat"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Dit membraan heeft een sterke schelp gemaakt van calciumcarbonaat. Het kan gemakkelijk schade weerstaan en vereist minder energie om niet te vervormen. De nadelen van het hebben van zo een zware schelp is dat de cel veel langzamer is en lang doet over het absorberen van stoffen."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Glucose spawnen"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "De vacuole is een intern membraanorganel dat gebruikt wordt voor opslag in de cel. Ze bestaan uit meerdere vesikels, kleinere membraanstructuren vaak gebruikt in cellen voor opslag, die samengesmolten zijn. Het is gevuld met water dat gebruikt wordt om moleculen, enzymen, vaste stoffen en andere substanties op te slaan. Hun vorm is veranderlijk en kan variëren tussen cellen."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Verbindings agent"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Het kleverige binnenste van een cel. Het cytoplasma is het basismengsel van ionen, proteïnen en andere in water opgeloste stoffen die de binnenkant van de cel vullen. Een van de functies die het vervult is glycolyse, de omzetting van glucose in ATP-energie. Voor cellen zonder organellen die zorgen voor een geavanceerder metabolisme, is dit waar ze op vertrouwen voor energie. Het wordt ook gebruikt om moleculen in de cel op te slaan en om de cel te vergroten."
 
 msgid "CAMERA"
 msgstr "Camera"
@@ -2780,6 +2796,10 @@ msgstr ""
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "{0}-{1}m onder zeeniveau"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Chemosynthese"
 
 msgid "GLYCOLYSIS"
 msgstr "Glycolyse"
@@ -5257,6 +5277,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Fosfaat"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Fotosynthese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Fotosynthese"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Fotosynthese"
 
 msgid "PHYSICAL_CONDITIONS"

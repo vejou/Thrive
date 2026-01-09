@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-18 17:38+0000\n"
 "Last-Translator: Teashrock <kajitsu22@gmail.com>\n"
 "Language-Team: Russian <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/ru/>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.8.0\n"
@@ -625,6 +625,22 @@ msgstr "Карбонат кальция"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Эта мембрана имеет прочную оболочку, изготовленную из карбоната кальция. Она может легко противостоять повреждениям и требует меньше энергии, чтобы не деформироваться. Недостатками такой тяжелой оболочки является то, что клетка не может быстро поглощать ресурсы и двигается медленнее."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Создать глюкозу"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "Целлюлаза позволяет клетке разрушать целлюлозную мембрану. С количеством повышается эффективность."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Не изменять"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Реснички похожи на жгутики, но вместо однонаправленного ускорения они производят вращательное, помогая клеткам вращаться. Так же доступна их модификация, что при включении режима поглощения притягивает объекты к хозяину."
 
 msgid "CAMERA"
 msgstr "Камера"
@@ -2580,6 +2596,10 @@ msgstr "Концентрация глюкозы резко упала!"
 
 msgid "GLUCOSE_LEVEL"
 msgstr "Уровень Глюкозы"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Синтез Люциферазы"
 
 msgid "GLYCOLYSIS"
 msgstr "Гликолиз"
@@ -4814,6 +4834,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Уровень Фосфатов"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Фотосинтез"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Фотосинтез"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Фотосинтез"
 
 msgid "PHYSICAL_CONDITIONS"

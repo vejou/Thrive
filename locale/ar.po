@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-18 07:22+0000\n"
 "Last-Translator: khalid <khalid50540@gmail.com>\n"
 "Language-Team: Arabic <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/ar/>\n"
-"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.9.1\n"
@@ -626,6 +626,21 @@ msgstr ""
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr ""
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "السليولوز"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "انزيم السليوليز يسمح للخلية بتحليل اغشية السليولوز. كل اضافة من انزيم السليوليز تزيد الفعالية."
+
+msgid "CALVIN_NONE"
+msgstr ""
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "انزيم السليوليز يسمح للخلية بتحليل اغشية السليولوز. كل اضافة من انزيم السليوليز تزيد الفعالية."
 
 msgid "CAMERA"
 msgstr "الكميرا"
@@ -2464,6 +2479,10 @@ msgstr ""
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "استمر إلا مرحلة الاستيقاظ. يصبح متاحًا بمجرد أن تكون قوة العقل كافية (أنسجة مع محاور)."
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "عام"
 
 msgid "GLYCOLYSIS"
 msgstr ""
@@ -4713,6 +4732,13 @@ msgid "PHOSPHATES_LEVELS"
 msgstr ""
 
 msgid "PHOTOSYNTHESIS"
+msgstr ""
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "عام"
+
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr ""
 
 msgid "PHYSICAL_CONDITIONS"

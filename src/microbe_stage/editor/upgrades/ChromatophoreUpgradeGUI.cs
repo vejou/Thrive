@@ -92,6 +92,7 @@ public partial class ChromatophoreUpgradeGUI : VBoxContainer, IOrganelleUpgrader
         }
 
         ApplySelection(currentlySelectedType);
+        GD.Print(currentlySelectedType);
     }
 
     public bool ApplyChanges(ICellEditorComponent editorComponent, OrganelleUpgrades organelleUpgrades)

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-12-18 14:19+0200\n"
+"POT-Creation-Date: 2026-01-09 17:04-0500\n"
 "PO-Revision-Date: 2025-12-18 17:38+0000\n"
 "Last-Translator: Teashrock <kajitsu22@gmail.com>\n"
 "Language-Team: Ukrainian <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/uk/>\n"
-"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.11.4\n"
 "Generated-By: Babel 2.9.0\n"
@@ -628,6 +628,22 @@ msgstr "Карбонат Кальцію"
 
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "Ця мембрана має міцну оболонку з карбонату кальцію. Вона легше протистоїть пошкодженням і потребує менше енергії, щоб не деформуватись. Серед недоліків такої оболонки значна повільність та забирає більше часу для поглинання ресурсів."
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE"
+msgstr "Спавн глюкози"
+
+#, fuzzy
+msgid "CALVIN_GLUCOSE_DESCRIPTION"
+msgstr "Целюлаза надає змогу клітині ламати целюлозні мембрани. Кожне додавання підвищить ефективність."
+
+#, fuzzy
+msgid "CALVIN_NONE"
+msgstr "Жоден"
+
+#, fuzzy
+msgid "CALVIN_NONE_DESCRIPTION"
+msgstr "Волоски війок скидаються на джгутики, але замість забезпечення спрямування сили тяги вони надають обертову силу, що допомагає повертатися клітині."
 
 msgid "CAMERA"
 msgstr "Камера"
@@ -2616,6 +2632,10 @@ msgstr "Концентрація глюкози раптово впала!"
 #, fuzzy
 msgid "GLUCOSE_LEVEL"
 msgstr "{0}-{1}м. нижче рівня моря"
+
+#, fuzzy
+msgid "GLUCOSE_SYNTHESIS"
+msgstr "Синтез люциферази"
 
 msgid "GLYCOLYSIS"
 msgstr "Гліколіз"
@@ -4962,6 +4982,14 @@ msgid "PHOSPHATES_LEVELS"
 msgstr "Вартість фосфату:"
 
 msgid "PHOTOSYNTHESIS"
+msgstr "Фотосинтез"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (ATP)"
+msgstr "Фотосинтез"
+
+#, fuzzy
+msgid "PHOTOSYNTHESIS (GLUCOSE)"
 msgstr "Фотосинтез"
 
 msgid "PHYSICAL_CONDITIONS"
