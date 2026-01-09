@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-09 17:04-0500\n"
+"POT-Creation-Date: 2026-01-09 17:12-0500\n"
 "PO-Revision-Date: 2025-04-26 10:58+0000\n"
 "Last-Translator: Samuel Haššo <snurka1999@gmail.com>\n"
 "Language-Team: Slovak <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/sk/>\n"
@@ -5017,11 +5017,11 @@ msgid "PHOTOSYNTHESIS"
 msgstr "Fotosyntéza"
 
 #, fuzzy
-msgid "PHOTOSYNTHESIS (ATP)"
+msgid "PHOTOSYNTHESIS_ATP"
 msgstr "Fotosyntéza"
 
 #, fuzzy
-msgid "PHOTOSYNTHESIS (GLUCOSE)"
+msgid "PHOTOSYNTHESIS_GLUCOSE"
 msgstr "Fotosyntéza"
 
 msgid "PHYSICAL_CONDITIONS"

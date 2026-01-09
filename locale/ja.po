@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thrive VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-01-09 17:04-0500\n"
+"POT-Creation-Date: 2026-01-09 17:12-0500\n"
 "PO-Revision-Date: 2025-11-14 11:00+0000\n"
 "Last-Translator: Sur3 <sur3@gmx.de>\n"
 "Language-Team: Japanese <https://translate.revolutionarygamesstudio.com/projects/thrive/thrive-game/ja/>\n"
@@ -4578,11 +4578,12 @@ msgid "PHOTOSYNTHESIS"
 msgstr ""
 
 #, fuzzy
-msgid "PHOTOSYNTHESIS (ATP)"
+msgid "PHOTOSYNTHESIS_ATP"
 msgstr "化学合成"
 
-msgid "PHOTOSYNTHESIS (GLUCOSE)"
-msgstr ""
+#, fuzzy
+msgid "PHOTOSYNTHESIS_GLUCOSE"
+msgstr "化学合成"
 
 msgid "PHYSICAL_CONDITIONS"
 msgstr ""
