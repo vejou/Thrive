@@ -625,21 +625,17 @@ msgstr "Calcium Carbonate"
 msgid "CALCIUM_CARBONATE_MEMBRANE_DESCRIPTION"
 msgstr "This membrane has a strong shell made from calcium carbonate. It can easily resist damage and requires less energy to not deform. The disadvantages of having such a heavy shell is that the cell is much slower and takes a while to absorb resources."
 
-#, fuzzy
 msgid "CALVIN_GLUCOSE"
-msgstr "Spawn glucose"
+msgstr "Glucose production"
 
-#, fuzzy
 msgid "CALVIN_GLUCOSE_DESCRIPTION"
-msgstr "Cellulase enables the cell to break down cellulose membrane. Each addition increases the effectiveness."
+msgstr "Glucose is produced from the energy made in this organelle."
 
-#, fuzzy
 msgid "CALVIN_NONE"
-msgstr "None"
+msgstr "No processing"
 
-#, fuzzy
 msgid "CALVIN_NONE_DESCRIPTION"
-msgstr "Cilia hairs are similar to the flagella but instead of providing directional thrust force they provide rotational force to help cells turn."
+msgstr "No processing energy; exported as ATP"
 
 msgid "CAMERA"
 msgstr "Camera"
@@ -2599,9 +2595,8 @@ msgstr "Glucose concentrations have drastically dropped!"
 msgid "GLUCOSE_LEVEL"
 msgstr "Glucose level"
 
-#, fuzzy
 msgid "GLUCOSE_SYNTHESIS"
-msgstr "Luciferase Synthesis"
+msgstr "Glucose Synthesis"
 
 msgid "GLYCOLYSIS"
 msgstr "Glycolysis"
@@ -4838,13 +4833,11 @@ msgstr "Phosphates level"
 msgid "PHOTOSYNTHESIS"
 msgstr "Photosynthesis"
 
-#, fuzzy
 msgid "PHOTOSYNTHESIS_ATP"
-msgstr "Photosynthesis"
+msgstr "Photosynthesis (ATP)"
 
-#, fuzzy
 msgid "PHOTOSYNTHESIS_GLUCOSE"
-msgstr "Photosynthesis"
+msgstr "Photosynthesis (Glucose)"
 
 msgid "PHYSICAL_CONDITIONS"
 msgstr "Physical Conditions"
